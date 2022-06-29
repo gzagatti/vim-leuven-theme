@@ -1,8 +1,11 @@
 return {
   normal = {
-    a = {fg = "#85ceeb", bg = "#335ea8", gui = "bold"},
-    b = {fg = "#f8fbf8", bg = "#335ea8"},
-    c = {fg = "#85ceeb", bg = "#383838", gui= "bold"},
+    a = {fg = "#f8fbf8", bg = "#335ea8", gui = "bold"},
+    b = {fg = "#85ceeb", bg = "#335ea8"},
+    c = {fg = "#85ceeb", bg = "#454545"},
+    y = {fg = "#85ceeb", bg = "#335ea8"},
+    z = {fg = "#85ceeb", bg = "#335ea8"},
+
   },
   inactive = {
     a = {fg = "#f8fbf8", bg = "#a9a9a9"},
