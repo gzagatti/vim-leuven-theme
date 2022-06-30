@@ -65,13 +65,13 @@ function s:Style(hlgroup, fg, ...) "bg, attr_list, special
 endfunction
 
 " highlight groups {{{
-  call s:Style('LeuvenBg', s:none, s:bg)
+  call s:Style('LeuvenFg', s:fg, s:none)
 
   call s:Style('LeuvenComment', s:comment)
   call s:Style('LeuvenInvertedComment', s:bg, s:comment)
 
   call s:Style('LeuvenMagenta', ['#ba36a5', 0])
-  call s:Style('LeuvenBlue', ['#006fe0', 0])
+  call s:Style('LeuvenBlue', ['#006fe0', 0], s:none)
 
   call s:Style('LeuvenDarkMagenta', ['#6434a3', 0])
   call s:Style('LeuvenDarkGreen', ['#008000', 0])
@@ -90,7 +90,21 @@ endfunction
 
   call s:Style('LeuvenMutedYellowHighlight', s:comment, ['#fff68f', 0])
 
-  call s:Style('LeuvenTitle',['#3c3c3c', 0], ['#f0f0f0', 0], ['underline'])
+  call s:Style('LeuvenMargins', ['#006666', 0], ['#ddeded', 0])
+
+  call s:Style('LeuvenTitle',['#3c3c3c', 0], ['#f0f0f0', 0], ['bold', 'underline'])
+  hi! link LeuvenHead1 LeuvenTitle
+  call s:Style('LeuvenHead2', ['#123555', 0], ['#e5f4fb', 0], ['bold', 'underline'])
+  call s:Style('LeuvenHead3', ['#005522', 0], ['#efffef', 0], ['bold', 'underline'])
+  call s:Style('LeuvenHead4', ['#ea6300', 0], s:bg, ['bold'])
+  call s:Style('LeuvenHead5', ['#e3258d', 0], s:bg, ['bold'])
+  call s:Style('LeuvenHead6', ['#0077cc', 0], s:bg, ['bold'])
+  call s:Style('LeuvenHead7', ['#2eae2c', 0], s:bg, ['bold'])
+  call s:Style('LeuvenHead8', ['#fd8008', 0], s:bg, ['bold'])
+
+  hi! link LeuvenBlockMargins LeuvenMargins
+  call s:Style('LeuvenBlockContent', ['#000088', 0], s:bg)
+
 "}}}
 
 " user interface {{{
@@ -103,8 +117,8 @@ endfunction
   "" StatusLineNC { }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 
   " normal
-  hi! link NormalFloat LeuvenBg "normal text in floating windows.
-  hi! link NormalNC LeuvenBg "normal text in in non-current windows.
+  hi! link NormalFloat Normal "normal text in floating windows.
+  hi! link NormalNC Normal "normal text in in non-current windows.
 
   " cursors
   hi! link Cursor LeuvenTransparentCyanHighlight "character under the cursor
@@ -112,7 +126,7 @@ endfunction
   hi! link lCursor Cursor "character under the cursor when |language-mapping| is used (see 'guicursor')"
   hi! link CursorIM Cursor "like Cursor, but used when in IME mode |CursorIM|
   hi! link TermCursor Cursor "cursor in a focused terminal
-  hi! link TermCursorNC LeuvenBg "cursor in unfocused terminal
+  hi! clear TermCursorNC "cursor in unfocused terminal
 
   hi! link CursorLine LeuvenTransparentGreenHighlight "screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set
   hi! link CursorColumn LeuvenTransparentGreenHighlight "screen-column at the cursor, when 'cursorcolumn' is set.
@@ -144,7 +158,7 @@ endfunction
   hi! link Winseparator LeuvenDarkGray "separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
 
   " fold
-  hi! link Folded LeuvenLiveBlueHighlight "line used for closed folds
+  hi! link Folded LeuvenMargins "line used for closed folds
 
   " search
   call s:Style('IncSearch', s:bg, ['#5974ab', 0], ['underline']) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
@@ -199,9 +213,9 @@ endfunction
   call s:Style('Comment', s:comment) "any comment
 
   hi! link String LeuvenDarkGreen "a string constant: "this is a string"
-  hi! link Character LeuvenBg "a character constant: 'c', '\n'
-  hi! link Number LeuvenBg "a number constant: 234, 0xff
-  hi! link Float LeuvenBg "a floating point constant: 2.3e10
+  hi! link Character LeuvenFg "a character constant: 'c', '\n'
+  hi! link Number LeuvenFg "a number constant: 234, 0xff
+  hi! link Float LeuvenFg "a floating point constant: 2.3e10
 
   hi! link Constant LeuvenLiveMagentaHighlight "any constant
   hi! link Boolean Constant "a boolean constant: TRUE, false
@@ -226,12 +240,12 @@ endfunction
   "" Macro          { }, --   Same as Define
   "" PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-  hi! link Type LeuvenBg "(*) int, long, char, etc.
+  hi! link Type LeuvenFg "(*) int, long, char, etc.
   "" StorageClass   { }, --   static, register, volatile, etc.
   "" Structure      { }, --   struct, union, enum, etc.
   "" Typedef        { }, --   A typedef
 
-  hi! link Special LeuvenBg "(*) any special symbol
+  hi! link Special LeuvenFg "(*) any special symbol
   "" SpecialChar    { }, --   Special character in a constant
   "" Delimiter      { }, --   Character that needs attention
   "" SpecialComment { }, --   Special things inside a comment (e.g. '\n')
@@ -293,12 +307,12 @@ endfunction
   hi! link TSConstant Constant "constants identifiers
   hi! link TSConstBuiltin Constant "built-in constant values: `nil` in Lua.
   "" TSConstMacro         { } , -- Constants defined by macros: `NULL` in C.
-  hi! link TSConstructor LeuvenBg "constructor calls and definitions: `{}` in Lua, and Java constructors.
+  hi! link TSConstructor LeuvenFg "constructor calls and definitions: `{}` in Lua, and Java constructors.
   "" TSDebug              { } , -- Debugging statements.
   "" TSDefine             { } , -- Preprocessor #define statements.
   "" TSError              { } , -- Syntax/parser errors. This might highlight large sections of code while the user is typing still incomplete code, use a sensible highlight.
   "" TSException          { } , -- Exception related keywords: `try`, `except`, `finally` in Python.
-  hi! link TSField LeuvenBg "object and struct fields
+  hi! link TSField LeuvenFg "object and struct fields
   "" TSFloat              { } , -- Floating-point number literals.
   "" TSFunction           { } , -- Function calls and definitions.
   hi! link TSFuncBuiltin Function "built-in functions: `print` in Lua.
@@ -318,9 +332,9 @@ endfunction
   "" TSParameterReference { } , -- References to parameters of a function.
   "" TSPreProc            { } , -- Preprocessor #if, #else, #endif, etc.
   "" TSProperty           { } , -- Same as `TSField`.
-  hi! link TSPunctDelimiter LeuvenBg "punctuation delimiters: Periods, commas, semicolons, etc.
-  hi! link TSPunctBracket LeuvenBg "brackets, braces, parentheses, etc.
-  hi! link TSPunctSpecial LeuvenBg "special punctuation that doesn't fit into the previous categories.
+  hi! link TSPunctDelimiter LeuvenFg "punctuation delimiters: Periods, commas, semicolons, etc.
+  hi! link TSPunctBracket LeuvenFg "brackets, braces, parentheses, etc.
+  hi! link TSPunctSpecial LeuvenFg "special punctuation that doesn't fit into the previous categories.
   "" TSRepeat             { } , -- Keywords related to loops: `for`, `while`, etc.
   "" TSStorageClass       { } , -- Keywords that affect how a variable is stored: `static`, `comptime`, `extern`, etc.
   hi! link TSString String "string literals
@@ -336,8 +350,16 @@ endfunction
   "" TSEmphasis           { } , -- Text to be represented with emphasis.
   "" TSUnderline          { } , -- Text to be represented with an underline.
   "" TSStrike             { } , -- Strikethrough text.
+  hi! link TSHead1 LeuvenHead1 "text that is part of a heading level 1.
+  hi! link TSHead2 LeuvenHead2 "text that is part of a heading level 2.
+  hi! link TSHead3 LeuvenHead3 "text that is part of a heading level 3.
+  hi! link TSHead4 LeuvenHead4 "text that is part of a heading level 4.
+  hi! link TSHead5 LeuvenHead5 "text that is part of a heading level 5.
+  hi! link TSHead6 LeuvenHead6 "text that is part of a heading level 6.
+  hi! link TSHead7 LeuvenHead7 "text that is part of a heading level 7.
+  hi! link TSHead8 LeuvenHead8 "text that is part of a heading level 8.
   hi! link TSTitle LeuvenTitle "text that is part of a title.
-  "" TSLiteral            { } , -- Literal or verbatim text.
+  hi! link TSLiteral String "literal or verbatim text.
   "" TSURI                { } , -- URIs like hyperlinks or email addresses.
   "" TSMath               { } , -- Math environments like LaTeX's `$ ... $`
   hi! link TSTextReference Preproc "footnotes, text references, citations, etc.
@@ -348,8 +370,11 @@ endfunction
   hi! link TSDanger ErrorMsg "text representation of a danger note.
   hi! link TSType LeuvenDarkMagenta "type (and class) definitions and annotations.
   hi! link TSTypeBuiltin TSConstBuiltin "built-in types: `i32` in Rust.
-  hi! link TSVariable LeuvenBg
+  hi! link TSVariable LeuvenFg
   hi! link TSVariableBuiltin TSConstBuiltin "variable names defined by the language: `this` or `self` in Javascript.
+
+  hi! link TSBlockMargins LeuvenBlockMargins "margins of code blocks
+  hi! link TSBlockContent LeuvenBlockContent "code block contents
 " }}}
 
 " vim: fdm=marker ts=2 sts=2 sw=2 fdl=0:
