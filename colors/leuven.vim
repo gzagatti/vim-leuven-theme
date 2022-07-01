@@ -67,13 +67,19 @@ endfunction
 " highlight groups {{{
   call s:Style('LeuvenFg', s:fg, s:none)
 
+  call s:Style('LeuvenWhiteSpace', ['#636363', 0], s:none)
+
   call s:Style('LeuvenSubtleBg', s:none, ['#f4f4f1', 0])
+  call s:Style('LeuvenSubtle', ['#000088', 0], ['#f4f4f1', 0])
 
   call s:Style('LeuvenComment', s:comment)
   call s:Style('LeuvenInvertedComment', s:bg, s:comment)
 
   call s:Style('LeuvenMagenta', ['#ba36a5', 0])
   call s:Style('LeuvenBlue', ['#006fe0', 0], s:none)
+  call s:Style('LeuvenGreen', ['#10C200', 0], s:none)
+  call s:Style('LeuvenRed', ['#ff8080', 0], s:none )
+  call s:Style('LeuvenYellow', ['#ffa500', 0], s:none)
 
   call s:Style('LeuvenDarkMagenta', ['#6434a3', 0])
   call s:Style('LeuvenDarkGreen', ['#008000', 0])
@@ -86,15 +92,35 @@ endfunction
   call s:Style('LeuvenLiveBlueHighlight', ['#123555', 0], ['#e5f4fb', 0])
   call s:Style('LeuvenLiveMagentaHighlight', ['#ba36a5', 0], ['#ffe4ff', 0])
 
-  call s:Style('LeuvenTransparentGreenHighlight', s:none, ['#ccffcc', 0])
-  call s:Style('LeuvenTransparentCyanHighlight', s:none, ['#21bdff', 0])
-  call s:Style('LeuvenTransparentLightCyanHighlight', s:none, ['#8ed3ff', 0])
+  call s:Style('LeuvenLiveDarkGreenHighlight', ['#008000', 0], ['#ccffcc', 0])
+
+  call s:Style('LeuvenYellowBgBold', s:none, ['#f6fecd', 0], ['bold'])
+  call s:Style('LeuvenBlueBg', s:none, ['#ebf4fe', 0])
+  call s:Style('LeuvenGreenBg', s:none, ['#ccffcc', 0])
+  call s:Style('LeuvenCyanBg', s:none, ['#21bdff', 0])
+  call s:Style('LeuvenGrayBg', s:bg, ['#a9a9a9', 0])
+
+  call s:Style('LeuvenLightGreenBg', s:none, ['#c0e8c3', 0])
+  call s:Style('LeuvenLightCyanBg', s:none, ['#8ed3ff', 0])
+
+  call s:Style('LeuvenDarkBlueBgUnderline', s:bg, ['#5974ab', 0], ['underline'])
+  call s:Style('LeuvenDarkBlueBg', s:bg, ['#5974ab', 0])
+  call s:Style('LeuvenDarkGrayBg', s:bg,['#686868', 0])
+
+  call s:Style('LeuvenUndercurlRed', s:none, s:none, ['undercurl'], ['#ff8080', 0])
+  call s:Style('LeuvenUndercurlYellow', s:none, s:none, ['undercurl'], ['#ffa500', 0])
+  call s:Style('LeuvenUndercurlGreen', s:none, s:none, ['undercurl'], ['#10C200', 0])
+  call s:Style('LeuvenUndercurlComment', s:none, s:none, ['undercurl'], s:comment)
 
   call s:Style('LeuvenMutedYellowHighlight', s:comment, ['#fff68f', 0])
+  call s:Style('LeuvenMutedGrayHighlight', s:comment, ['#f0f0f0', 0])
 
+  call s:Style('LeuvenBlueonDarkGray', ['#85ceeb', 0], ['#454545', 0])
+  call s:Style('LeuvenBlueonBlue', ['#85ceeb', 0], ['#335ea8', 0])
+  call s:Style('LeuvenWhiteBoldonBlue',['#f8fbf8', 0], ['#335ea8', 0], ['bold'])
+  call s:Style('LeuvenBlackonYellow',['#000000', 0], ['#fff79f', 0])
 
-  call s:Style('LeuvenTitle',['#3c3c3c', 0], ['#f0f0f0', 0], ['bold', 'underline'])
-  hi! link LeuvenHead1 LeuvenTitle
+  call s:Style('LeuvenHead1',['#3c3c3c', 0], ['#f0f0f0', 0], ['bold', 'underline'])
   call s:Style('LeuvenHead2', ['#123555', 0], ['#e5f4fb', 0], ['bold', 'underline'])
   call s:Style('LeuvenHead3', ['#005522', 0], ['#efffef', 0], ['bold', 'underline'])
   call s:Style('LeuvenHead4', ['#ea6300', 0], s:bg, ['bold'])
@@ -105,7 +131,6 @@ endfunction
 
   call s:Style('LeuvenBlockMargins', ['#006666', 0], ['#ddeded', 0])
   call s:Style('LeuvenBlockContent', ['#000088', 0], s:bg)
-
 "}}}
 
 " user interface {{{
@@ -114,26 +139,31 @@ endfunction
   " required as some plugins will overwrite
   call s:Style('Normal', s:fg, has('gui_running') ? s:bg : s:none) "normal text
   call s:Style('WildMenu', s:fg, ['#ffe4ff', 0], ['bold']) "current match in 'wildmenu' completion
-  "" StatusLine   { }, -- Status line of current window
-  "" StatusLineNC { }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+
+  "status and tab lines
+  hi! link StatusLine LeuvenWhiteBoldonBlue
+  hi! link StatusLineNc LeuvenGrayBg "status lines of non-current windows.
+  hi! link Tabline LeuvenBlueonBlue "not active tab page label
+  hi! link TablineFill LeuvenBlueonDarkGray "where there are no labels
+  hi! link TabLineSel LeuvenWhiteBoldonBlue "active tab page label
 
   " normal
-  hi! link NormalFloat Normal "normal text in floating windows.
+  hi! link NormalFloat LeuvenSubtle "normal text in floating windows.
   hi! link NormalNC Normal "normal text in in non-current windows.
 
   " cursors
-  hi! link Cursor LeuvenTransparentCyanHighlight "character under the cursor
+  hi! link Cursor LeuvenCyanBg "character under the cursor
   hi! link iCursor Cursor "insert cursor
   hi! link lCursor Cursor "character under the cursor when |language-mapping| is used (see 'guicursor')"
   hi! link CursorIM Cursor "like Cursor, but used when in IME mode |CursorIM|
   hi! link TermCursor Cursor "cursor in a focused terminal
   hi! clear TermCursorNC "cursor in unfocused terminal
 
-  hi! link CursorLine LeuvenTransparentGreenHighlight "screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set
-  hi! link CursorColumn LeuvenTransparentGreenHighlight "screen-column at the cursor, when 'cursorcolumn' is set.
+  hi! link CursorLine LeuvenGreenBg "screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set
+  hi! link CursorColumn LeuvenGreenBg "screen-column at the cursor, when 'cursorcolumn' is set.
   hi! link CursorLineNr LeuvenLiveGreenHighlight "like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 
-  hi! link Visual LeuvenTransparentLightCyanHighlight "visual mode selection
+  hi! link Visual LeuvenLightCyanBg "visual mode selection
 
   " support columns
   hi! link LineNr LeuvenComment "line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
@@ -142,7 +172,7 @@ endfunction
   hi! link SignColumn LeuvenSubtleBg "column where |signs| are displayed
 
   " special
-  hi! link Directory Function "directory names (and other special names in listings)
+  hi! link Directory LeuvenBlue "directory names (and other special names in listings)
 
   " diff node
   hi! link DiffChange LeuvenInvertedComment "changed line
@@ -162,27 +192,23 @@ endfunction
   hi! link Folded LeuvenSubtleBg "line used for closed folds
 
   " search
-  call s:Style('IncSearch', s:bg, ['#5974ab', 0], ['underline']) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
-  call s:Style('MatchParen', s:none, ['#c0e8c3', 0]) "character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+  hi! link IncSearch LeuvenDarkBlueBgUnderline " 'incsearch' highlighting; also used for the text replaced with ":s///c"
+  hi! link Search LeuvenBlackonYellow "last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+  hi! link MatchParen LeuvenLightGreenBg "character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 
   " popup menu
-  call s:Style('Pmenu', s:fg, ['#ebf4fe', 0]) "normal item.
-  call s:Style('PmenuSel', s:bg, ['#5974ab', 0]) "selected item.
-  call s:Style('PmenuThumb', s:none,['#686868', 0]) "thumb of the scrollbar.
-  call s:Style('PmenuSbar', s:none, ['#a9a9a9', 0]) "scrollbar
-  call s:Style('Search', ['#000000', 0], ['#fff79f', 0]) "last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-  hi! link SpecialKey ErrorMsg
+  hi! link Pmenu LeuvenBlueBg "normal item.
+  hi! link PmenuSel LeuvenDarkBlueBg "selected item
+  hi! link PmenuThumb LeuvenDarkGrayBg "thumb of the scrollbar.
+  hi! link PmenuSbar LeuvenGrayBg "scrollbar
+
+  hi! link SpecialKey LeuvenLiveRedHighlight
 
   " spell
-  "" SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-  "" SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-  "" SpellLocal   { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-  "" SpellRare    { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-
-  " tab
-  "" TabLine      { }, -- Tab pages line, not active tab page label
-  "" TabLineFill  { }, -- Tab pages line, where there are no labels
-  "" TabLineSel   { }, -- Tab pages line, active tab page label
+  hi! link SpellBad LeuvenUndercurlRed "word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+  hi! link SpellCap LeuvenUndercurlComment "word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+  hi! link SpellLocal LeuvenUndercurlComment "word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+  hi! link SpellRare LeuvenundercurlComment "word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 
   " vim
   hi! link Title Preproc "titles for output from ":set all", ":autocmd" etc.
@@ -190,18 +216,18 @@ endfunction
 
   hi! link VisualNOS Visual "visual mode selection when vim is "Not Owning the Selection".
 
-  call s:Style('Whitespace', ['#636363', 0], s:none) "nbsp, space, tab and trail in 'listchars'
+  hi! link Whitespace LeuvenWhiteSpace "nbsp, space, tab and trail in 'listchars'
 
-  "" Question     { }, -- |hit-enter| prompt and yes/no questions
+  hi! link Question LeuvenFg "|hit-enter| prompt and yes/no questions
   "" QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 
-  "" ColorColumn  { }, -- Columns set with 'colorcolumn'
+  hi! link ColorColumn LeuvenYellowBgBold "columns set with 'colorcolumn'
   "" Conceal      { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
 
-  "" ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
-  "" MsgArea      { }, -- Area for messages and cmdline
-  "" MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-  "" NonText      { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+  hi! link ModeMsg LeuvenFg "'showmode' message (e.g., "-- INSERT -- ")
+  hi! link MsgArea LeuvenFg "area for messages and cmdline
+  hi! link MsgSeparator LeuvenBlueonDarkGray
+  hi! link NonText LeuvenComment "'@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 
   "" Common vim syntax groups used for all kinds of code and markup.
   "" Commented-out groups should chain up to their preferred (*) group
@@ -211,16 +237,15 @@ endfunction
   ""
   "" Uncomment and edit if you want more specific syntax highlighting.
 
-  call s:Style('Comment', s:comment) "any comment
+  hi! link Comment LeuvenComment "any comment
 
   hi! link String LeuvenDarkGreen "a string constant: "this is a string"
-  hi! link Character LeuvenFg "a character constant: 'c', '\n'
+  hi! link Character LeuvenLiveGreenHighlight "a character constant: 'c', '\n'
   hi! link Number LeuvenFg "a number constant: 234, 0xff
   hi! link Float LeuvenFg "a floating point constant: 2.3e10
 
   hi! link Constant LeuvenLiveMagentaHighlight "any constant
   hi! link Boolean Constant "a boolean constant: TRUE, false
-
 
   hi! link Identifier LeuvenMagenta "any variable name
   hi! link Function LeuvenBlue "function name (also: method for classes)
@@ -264,35 +289,35 @@ endfunction
 
   "" See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
   ""
-  "" LspReferenceText            { } , -- Used for highlighting "text" references
-  "" LspReferenceRead            { } , -- Used for highlighting "read" references
-  "" LspReferenceWrite           { } , -- Used for highlighting "write" references
-  "" LspCodeLens                 { } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
-  "" LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
-  "" LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+  " hi! link LspReferenceText LeuvenBlueBg "used for highlighting "text" references
+  " hi! link LspReferenceRead LeuvenBlueBg "used for highlighting "read" references
+  " hi! link LspReferenceWrite LeuvenBlueBg "used for highlighting "write" references
+  " hi! link LspCodeLens LeuvenBlueBg " used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
+  " hi! link LspCodeLensSeparator LeuvenDarkGray "used to color the separator between two or more code lens.
+  " hi! link LspSignatureActiveParameter LeuvenBlueBg "used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
   "" See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
   ""
-  "" DiagnosticError            { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-  "" DiagnosticWarn             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-  "" DiagnosticInfo             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-  "" DiagnosticHint             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-  "" DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
-  "" DiagnosticVirtualTextWarn  { } , -- Used for "Warn" diagnostic virtual text.
-  "" DiagnosticVirtualTextInfo  { } , -- Used for "Info" diagnostic virtual text.
-  "" DiagnosticVirtualTextHint  { } , -- Used for "Hint" diagnostic virtual text.
-  "" DiagnosticUnderlineError   { } , -- Used to underline "Error" diagnostics.
-  "" DiagnosticUnderlineWarn    { } , -- Used to underline "Warn" diagnostics.
-  "" DiagnosticUnderlineInfo    { } , -- Used to underline "Info" diagnostics.
-  "" DiagnosticUnderlineHint    { } , -- Used to underline "Hint" diagnostics.
-  "" DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
-  "" DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
-  "" DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.
-  "" DiagnosticFloatingHint     { } , -- Used to color "Hint" diagnostic messages in diagnostics float.
-  "" DiagnosticSignError        { } , -- Used for "Error" signs in sign column.
-  "" DiagnosticSignWarn         { } , -- Used for "Warn" signs in sign column.
-  "" DiagnosticSignInfo         { } , -- Used for "Info" signs in sign column.
-  "" DiagnosticSignHint         { } , -- Used for "Hint" signs in sign column.
+  hi! link DiagnosticError LeuvenRed "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+  hi! link DiagnosticWarn  LeuvenYellow "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+  hi! link DiagnosticInfo None "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+  hi! link DiagnosticHint None "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+  " hi! link DiagnosticVirtualTextError LeuvenRed "used for "Error" diagnostic virtual text.
+  " hi! link DiagnosticVirtualTextWarn LeuvenYellow "used for "Warn" diagnostic virtual text.
+  hi! link DiagnosticVirtualTextInfo LeuvenComment "used for "Info" diagnostic virtual text.
+  hi! link DiagnosticVirtualTextHint LeuvenComment "used for "Hint" diagnostic virtual text.
+  hi! link DiagnosticUnderlineError LeuvenUndercurlRed "used to underline "Error" diagnostics.
+  hi! link DiagnosticUnderlineWarn LeuvenUndercurlYellow "used to underline "Warn" diagnostics.
+  hi! link DiagnosticUnderlineInfo LeuvenUndercurlComment "used to underline "Info" diagnostics.
+  hi! link DiagnosticUnderlineHint LeuvenUndercurlComment "used to underline "Hint" diagnostics.
+  hi! link DiagnosticFloatingError LeuvenLiveRedHighlight "used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+  hi! link DiagnosticFloatingWarn LeuvenLiveYellowHighlight "used to color "Warn" diagnostic messages in diagnostics float.
+  hi! link DiagnosticFloatingInfo LeuvenGrayBg "used to color "Info" diagnostic messages in diagnostics float.
+  hi! link DiagnosticFloatingHint LeuvenGrayBg "used to color "Hint" diagnostic messages in diagnostics float.
+  " hi! link DiagnosticSignError LeuvenRed "used for "Error" signs in sign column.
+  " hi! link DiagnosticSignWarn LeuvenYellow "used for "Warn" signs in sign column.
+  hi! link DiagnosticSignInfo LeuvenComment "used for "Info" signs in sign column.
+  hi! link DiagnosticSignHint LeuvenComment "used for "Hint" signs in sign column.
 
   "" Tree-Sitter syntax groups. Most link to corresponding
   "" vim syntax groups (e.g. TSKeyword => Keyword) by default.
@@ -316,10 +341,10 @@ endfunction
   hi! link TSField LeuvenFg "object and struct fields
   "" TSFloat              { } , -- Floating-point number literals.
   "" TSFunction           { } , -- Function calls and definitions.
-  hi! link TSFuncBuiltin Function "built-in functions: `print` in Lua.
+  hi! link TSFuncBuiltin LeuvenLiveBlueHighlight "built-in functions: `print` in Lua.
   "" TSFuncMacro          { } , -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
   "" TSInclude            { } , -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
-  call s:Style('TSKeyword', ['#0000ff', 0]) "keywords that don't fit into other categories.
+  hi! link TSKeyword LeuvenDarkBlue "keywords that don't fit into other categories.
   "" TSKeywordFunction    { } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
   "" TSKeywordOperator    { } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
   "" TSKeywordReturn      { } , -- Keywords like `return` and `yield`.
@@ -333,14 +358,14 @@ endfunction
   "" TSParameterReference { } , -- References to parameters of a function.
   "" TSPreProc            { } , -- Preprocessor #if, #else, #endif, etc.
   "" TSProperty           { } , -- Same as `TSField`.
-  hi! link TSPunctDelimiter LeuvenFg "punctuation delimiters: Periods, commas, semicolons, etc.
-  hi! link TSPunctBracket LeuvenFg "brackets, braces, parentheses, etc.
-  hi! link TSPunctSpecial LeuvenFg "special punctuation that doesn't fit into the previous categories.
+  " hi! link TSPunctDelimiter LeuvenFg "punctuation delimiters: Periods, commas, semicolons, etc.
+  " hi! link TSPunctBracket LeuvenFg "brackets, braces, parentheses, etc.
+  " hi! link TSPunctSpecial LeuvenFg "special punctuation that doesn't fit into the previous categories.
   "" TSRepeat             { } , -- Keywords related to loops: `for`, `while`, etc.
   "" TSStorageClass       { } , -- Keywords that affect how a variable is stored: `static`, `comptime`, `extern`, etc.
   hi! link TSString String "string literals
   "" TSStringRegex        { } , -- Regular expression literals.
-  "" TSStringEscape       { } , -- Escape characters within a string: `\n`, `\t`, etc.
+  hi! link TSStringEscape LeuvenLiveDarkGreenHighlight "escape characters within a string: `\n`, `\t`, etc.
   "" TSStringSpecial      { } , -- Strings with special meaning that don't fit into the previous categories.
   "" TSSymbol             { } , -- Identifiers referring to symbols or atoms.
   "" TSTag                { } , -- Tags like HTML tag names.
@@ -359,7 +384,7 @@ endfunction
   hi! link TSHead6 LeuvenHead6 "text that is part of a heading level 6.
   hi! link TSHead7 LeuvenHead7 "text that is part of a heading level 7.
   hi! link TSHead8 LeuvenHead8 "text that is part of a heading level 8.
-  hi! link TSTitle LeuvenTitle "text that is part of a title.
+  hi! link TSTitle LeuvenHead1 "text that is part of a title.
   hi! link TSLiteral String "literal or verbatim text.
   "" TSURI                { } , -- URIs like hyperlinks or email addresses.
   "" TSMath               { } , -- Math environments like LaTeX's `$ ... $`
