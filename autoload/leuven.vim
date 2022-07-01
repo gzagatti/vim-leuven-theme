@@ -1,56 +1,76 @@
 let g:leuven#palette = {}
 
-" ansi {{{
-let g:leuven#palette.ansi = [
-  \ '#ffffff',
-  \ '#cd0000',
-  \ '#0fb300',
-  \ '#ffcc33',
-  \ '#0000ee',
-  \ '#cd00cd',
-  \ '#00bfff',
-  \ '#ffffff',
-  \ '#000000',
-  \ '#ffe6e4',
-  \ '#ccffcc',
-  \ '#fff68f',
-  \ '#0000ff',
-  \ '#ffe4ff',
-  \ '#00cdcd',
-  \ '#666666',
-\ ]
+" palette {{{
+ let g:leuven#palette.black                  = ['#000000', 16]
+ let g:leuven#palette.fg                     = ['#333333', 0]
+ let g:leuven#palette.gray_h1_fg             = ['#3c3c3c', 0]
+ let g:leuven#palette.gray_dark_fg           = ['#454545', 0]
+ let g:leuven#palette.gray_whitespace        = ['#636363', 0]
+ let g:leuven#palette.gray_dark_bg           = ['#686868', 0]
+ let g:leuven#palette.gray_comment_fg        = ['#8d8d84', 0]
+ let g:leuven#palette.gray_bg                = ['#a9a9a9', 0]
+ let g:leuven#palette.gray_light_bg          = ['#f0f0f0', 0]
+ let g:leuven#palette.red_fg                 = ['#cd0000', 1]
+ let g:leuven#palette.red_light_fg           = ['#ff8080', 0]
+ let g:leuven#palette.red_bg                 = ['#ffe6e4', 9]
+ let g:leuven#palette.green_block_margins_fg = ['#006666', 0]
+ let g:leuven#palette.green_h3_fg            = ['#005522', 0]
+ let g:leuven#palette.green_dark_fg          = ['#008000', 0]
+ let g:leuven#palette.green_fg               = ['#0fb300', 2]
+ let g:leuven#palette.green_light_fg         = ['#10c200', 0]
+ let g:leuven#palette.green_h7_fg            = ['#2eae2c', 0]
+ let g:leuven#palette.green_light_bg         = ['#c0e8c3', 0]
+ let g:leuven#palette.green_bg               = ['#ccffcc', 10]
+ let g:leuven#palette.green_h3_bg            = ['#efffef', 0]
+ let g:leuven#palette.yellow_h4_fg           = ['#ea6300', 0]
+ let g:leuven#palette.yellow_h8_fg           = ['#fd8008', 0]
+ let g:leuven#palette.yellow_fg              = ['#ffa500', 3]
+ let g:leuven#palette.yellow_bg              = ['#fff68f', 11]
+ let g:leuven#palette.yellow_search_bg       = ['#fff79f', 0]
+ let g:leuven#palette.yellow_light_bg        = ['#f6fecd', 0]
+ let g:leuven#palette.blue_h1_fg             = ['#123555', 0]
+ let g:leuven#palette.blue_block_content_fg  = ['#000088', 0]
+ let g:leuven#palette.blue_fg                = ['#0000ff', 4]
+ let g:leuven#palette.blue_on_bg             = ['#335ea8', 0]
+ let g:leuven#palette.blue_dark_bg           = ['#5974ab', 0]
+ let g:leuven#palette.blue_light_fg          = ['#006fe0', 0]
+ let g:leuven#palette.blue_h6_fg             = ['#0077cc', 0]
+ let g:leuven#palette.blue_on_fg             = ['#85ceeb', 0]
+ let g:leuven#palette.blue_block_margins_bg  = ['#ddeded', 0]
+ let g:leuven#palette.blue_bg                = ['#e5f4fb', 12]
+ let g:leuven#palette.blue_light_bg          = ['#ebf4fe', 0]
+ let g:leuven#palette.magenta_dark_fg        = ['#6434a3', 0]
+ let g:leuven#palette.magenta_fg             = ['#ba36a5', 5]
+ let g:leuven#palette.magenta_h5_fg          = ['#e3258d', 0]
+ let g:leuven#palette.magenta_bg             = ['#ffe4ff', 13]
+ let g:leuven#palette.cyan_fg                = ['#21bdff', 6]
+ let g:leuven#palette.cyan_light_fg          = ['#8ed3ff', 0]
+ let g:leuven#palette.cyan_bg                = ['#e0ffff', 14]
+ let g:leuven#palette.white_dark_bg          = ['#f4f4f1', 0]
+ let g:leuven#palette.bg                     = ['#f8fbf8', 0]
 "}}}
 
-" palette {{{
-let g:leuven#palette.fg = ['#333333', 51]
-let g:leuven#palette.bg = ['#f8fbf8', 256]
 
-let g:leuven#palette.comment = ['#8D8D84', 15]
-
-let g:leuven#palette.black_fg = [g:leuven#palette.ansi[0], 0]
-let g:leuven#palette.black_bg = [g:leuven#palette.ansi[8], 8]
-
-let g:leuven#palette.red_fg = [g:leuven#palette.ansi[1], 1]
-let g:leuven#palette.red_bg = [g:leuven#palette.ansi[9], 9]
-
-let g:leuven#palette.green_fg = ['#008000', 2]
-let g:leuven#palette.green_bg = [g:leuven#palette.ansi[10], 10]
-
-let g:leuven#palette.yellow_fg = [g:leuven#palette.ansi[3], 3]
-let g:leuven#palette.yellow_bg = [g:leuven#palette.ansi[11], 11]
-
-let g:leuven#palette.blue_fg = [g:leuven#palette.ansi[4], 4]
-let g:leuven#palette.blue_bg = [g:leuven#palette.ansi[12], 12]
-
-let g:leuven#palette.magenta_fg = [g:leuven#palette.ansi[5], 5]
-let g:leuven#palette.magenta_bg = [g:leuven#palette.ansi[13], 13]
-
-let g:leuven#palette.cyan_fg = [g:leuven#palette.ansi[6], 6]
-let g:leuven#palette.cyan_bg = [g:leuven#palette.ansi[14], 14]
-
-let g:leuven#palette.white_fg = [g:leuven#palette.ansi[7], 7]
-let g:leuven#palette.white_bg = [g:leuven#palette.ansi[15], 15]
-" }}}
+" ansi {{{
+let g:leuven#terminal_ansi_colors = [
+  \ g:leuven#palette.bg,
+  \ g:leuven#palette.red_fg,
+  \ g:leuven#palette.green_fg,
+  \ g:leuven#palette.yellow_fg,
+  \ g:leuven#palette.blue_fg,
+  \ g:leuven#palette.magenta_fg,
+  \ g:leuven#palette.cyan_fg,
+  \ g:leuven#palette.fg,
+  \ g:leuven#palette.fg,
+  \ g:leuven#palette.red_bg,
+  \ g:leuven#palette.green_bg,
+  \ g:leuven#palette.yellow_bg,
+  \ g:leuven#palette.blue_bg,
+  \ g:leuven#palette.magenta_bg,
+  \ g:leuven#palette.cyan_bg,
+  \ g:leuven#palette.gray_dark_bg,
+\ ]
+"}}}
 
 func! leuven#should_abort(...)
     if ! exists('g:colors_name') || g:colors_name !=# 'leuven'

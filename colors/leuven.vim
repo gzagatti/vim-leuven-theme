@@ -11,43 +11,62 @@ endif
 
 let g:colors_name = 'leuven'
 
-"color palette {{{
-let s:fg = g:leuven#palette.fg
-let s:bg = g:leuven#palette.bg
-let s:comment = g:leuven#palette.comment
-
-let s:black_fg = g:leuven#palette.black_fg
-let s:black_bg = g:leuven#palette.black_bg
-
-let s:red_fg = g:leuven#palette.red_fg
-let s:red_bg = g:leuven#palette.red_bg
-
-let s:green_fg = g:leuven#palette.green_fg
-let s:green_bg = g:leuven#palette.green_bg
-
-let s:yellow_fg = g:leuven#palette.yellow_fg
-let s:yellow_bg = g:leuven#palette.yellow_bg
-
-let s:blue_fg = g:leuven#palette.blue_fg
-let s:blue_bg = g:leuven#palette.blue_bg
-
-let s:magenta_fg = g:leuven#palette.magenta_fg
-let s:magenta_bg = g:leuven#palette.magenta_bg
-
-let s:cyan_fg = g:leuven#palette.cyan_fg
-let s:cyan_bg = g:leuven#palette.cyan_bg
-
-let s:white_fg = g:leuven#palette.white_fg
-let s:white_bg = g:leuven#palette.white_bg
-
-let s:none = ['NONE', 'NONE']
+"palette {{{
+let s:none                   = ['NONE', 'NONE']
+let s:black                  = g:leuven#palette.black
+let s:fg                     = g:leuven#palette.fg
+let s:gray_h1_fg             = g:leuven#palette.gray_h1_fg
+let s:gray_dark_fg           = g:leuven#palette.gray_dark_fg
+let s:gray_whitespace        = g:leuven#palette.gray_whitespace
+let s:gray_dark_bg           = g:leuven#palette.gray_dark_bg
+let s:gray_comment_fg        = g:leuven#palette.gray_comment_fg
+let s:gray_bg                = g:leuven#palette.gray_bg
+let s:gray_light_bg          = g:leuven#palette.gray_light_bg
+let s:red_fg                 = g:leuven#palette.red_fg
+let s:red_light_fg           = g:leuven#palette.red_light_fg
+let s:red_bg                 = g:leuven#palette.red_bg
+let s:green_block_margins_fg = g:leuven#palette.green_block_margins_fg
+let s:green_h3_fg            = g:leuven#palette.green_h3_fg
+let s:green_dark_fg          = g:leuven#palette.green_dark_fg
+let s:green_fg               = g:leuven#palette.green_fg
+let s:green_light_fg         = g:leuven#palette.green_light_fg
+let s:green_h7_fg            = g:leuven#palette.green_h7_fg
+let s:green_light_bg         = g:leuven#palette.green_light_bg
+let s:green_bg               = g:leuven#palette.green_bg
+let s:green_h3_bg            = g:leuven#palette.green_h3_bg
+let s:yellow_h4_fg           = g:leuven#palette.yellow_h4_fg
+let s:yellow_h8_fg           = g:leuven#palette.yellow_h8_fg
+let s:yellow_fg              = g:leuven#palette.yellow_fg
+let s:yellow_bg              = g:leuven#palette.yellow_bg
+let s:yellow_search_bg       = g:leuven#palette.yellow_search_bg
+let s:yellow_light_bg        = g:leuven#palette.yellow_light_bg
+let s:blue_h1_fg             = g:leuven#palette.blue_h1_fg
+let s:blue_block_content_fg  = g:leuven#palette.blue_block_content_fg
+let s:blue_fg                = g:leuven#palette.blue_fg
+let s:blue_on_bg             = g:leuven#palette.blue_on_bg
+let s:blue_dark_bg           = g:leuven#palette.blue_dark_bg
+let s:blue_light_fg          = g:leuven#palette.blue_light_fg
+let s:blue_h6_fg             = g:leuven#palette.blue_h6_fg
+let s:blue_on_fg             = g:leuven#palette.blue_on_fg
+let s:blue_block_margins_bg  = g:leuven#palette.blue_block_margins_bg
+let s:blue_bg                = g:leuven#palette.blue_bg
+let s:blue_light_bg          = g:leuven#palette.blue_light_bg
+let s:magenta_dark_fg        = g:leuven#palette.magenta_dark_fg
+let s:magenta_fg             = g:leuven#palette.magenta_fg
+let s:magenta_h5_fg          = g:leuven#palette.magenta_h5_fg
+let s:magenta_bg             = g:leuven#palette.magenta_bg
+let s:cyan_fg                = g:leuven#palette.cyan_fg
+let s:cyan_light_fg          = g:leuven#palette.cyan_light_fg
+let s:cyan_bg                = g:leuven#palette.cyan_bg
+let s:white_dark_bg          = g:leuven#palette.white_dark_bg
+let s:bg                     = g:leuven#palette.bg
 "}}}
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
   finish
 endif
 
-function s:Style(hlgroup, fg, ...) "bg, attr_list, special
+function s:h(hlgroup, fg, ...) "bg, attr_list, special
   let l:fg = copy(a:fg)
   let l:bg = get(a:, 1, ['NONE', 'NONE'])
   let l:attr_list = filter(get(a:, 2, ['NONE']), 'type(v:val) == 1')
@@ -55,90 +74,95 @@ function s:Style(hlgroup, fg, ...) "bg, attr_list, special
   let l:special = get(a:, 3, ['NONE', 'NONE'])
 
   let l:hl_string = [
-  \ 'highlight', a:hlgroup,
-  \ 'guifg=' . l:fg[0], 'ctermfg=' . l:fg[1],
-  \ 'guibg=' . l:bg[0], 'ctermbg=' . l:bg[1],
-  \ 'gui=' . l:attrs, 'cterm=' . l:attrs,
-  \ 'guisp=' . l:special[0],
+    \ 'highlight', a:hlgroup,
+    \ 'guifg=' . l:fg[0], 'ctermfg=' . l:fg[1],
+    \ 'guibg=' . l:bg[0], 'ctermbg=' . l:bg[1],
+    \ 'gui=' . l:attrs, 'cterm=' . l:attrs,
+    \ 'guisp=' . l:special[0],
   \]
   execute join(l:hl_string, ' ')
 endfunction
 
 " highlight groups {{{
-  call s:Style('LeuvenFg', s:fg, s:none)
+  call s:h('LeuvenFg', s:fg)
 
-  call s:Style('LeuvenWhiteSpace', ['#636363', 0], s:none)
+  call s:h('LeuvenWhiteSpace', s:gray_whitespace)
 
-  call s:Style('LeuvenSubtleBg', s:none, ['#f4f4f1', 0])
-  call s:Style('LeuvenSubtle', ['#000088', 0], ['#f4f4f1', 0])
+  call s:h('LeuvenSubtle', s:blue_block_content_fg, s:white_dark_bg)
+  call s:h('LeuvenSubtleBg', s:none, s:white_dark_bg)
 
-  call s:Style('LeuvenComment', s:comment)
-  call s:Style('LeuvenInvertedComment', s:bg, s:comment)
+  call s:h('LeuvenComment', s:gray_comment_fg)
+  call s:h('LeuvenInvertedComment', s:bg, s:gray_comment_fg)
 
-  call s:Style('LeuvenMagenta', ['#ba36a5', 0])
-  call s:Style('LeuvenBlue', ['#006fe0', 0], s:none)
-  call s:Style('LeuvenGreen', ['#10C200', 0], s:none)
-  call s:Style('LeuvenRed', ['#ff8080', 0], s:none )
-  call s:Style('LeuvenYellow', ['#ffa500', 0], s:none)
+  call s:h('LeuvenMagenta', s:magenta_fg)
+  call s:h('LeuvenGreen', s:green_fg)
+  call s:h('LeuvenBlue', s:blue_fg)
+  call s:h('LeuvenRed', s:red_fg)
+  call s:h('LeuvenYellow', s:yellow_fg)
 
-  call s:Style('LeuvenDarkMagenta', ['#6434a3', 0])
-  call s:Style('LeuvenDarkGreen', ['#008000', 0])
-  call s:Style('LeuvenDarkBlue', ['#0000ff', 0])
-  call s:Style('LeuvenDarkGray', ['#454545', 0])
+  call s:h('LeuvenLightRed', s:red_light_fg)
+  call s:h('LeuvenLightGreen', s:green_light_fg)
+  call s:h('LeuvenLightBlue', s:blue_light_fg)
 
-  call s:Style('LeuvenLiveRedHighlight', ['#ff8080', 0], ['#ffe6e4', 0])
-  call s:Style('LeuvenLiveYellowHighlight', ['#ffa500', 0], ['#f6fecd', 0])
-  call s:Style('LeuvenLiveGreenHighlight', ['#10C200', 0], ['#ccffcc', 0])
-  call s:Style('LeuvenLiveBlueHighlight', ['#123555', 0], ['#e5f4fb', 0])
-  call s:Style('LeuvenLiveMagentaHighlight', ['#ba36a5', 0], ['#ffe4ff', 0])
+  call s:h('LeuvenDarkMagenta', s:magenta_dark_fg)
+  call s:h('LeuvenDarkGreen', s:green_dark_fg)
+  call s:h('LeuvenDarkBlue', s:blue_fg)
+  call s:h('LeuvenDarkGray', s:gray_dark_fg)
 
-  call s:Style('LeuvenLiveDarkGreenHighlight', ['#008000', 0], ['#ccffcc', 0])
+  call s:h('LeuvenLiveRedHighlight', s:red_fg, s:red_bg)
+  call s:h('LeuvenLiveYellowHighlight', s:yellow_fg, s:yellow_light_bg)
+  call s:h('LeuvenLiveGreenHighlight', s:green_light_fg, s:green_bg)
+  call s:h('LeuvenLiveBlueHighlight', s:blue_h1_fg, s:blue_bg)
+  call s:h('LeuvenLiveMagentaHighlight', s:magenta_fg, s:magenta_bg)
 
-  call s:Style('LeuvenYellowBgBold', s:none, ['#f6fecd', 0], ['bold'])
-  call s:Style('LeuvenBlueBg', s:none, ['#ebf4fe', 0])
-  call s:Style('LeuvenGreenBg', s:none, ['#ccffcc', 0])
-  call s:Style('LeuvenCyanBg', s:none, ['#21bdff', 0])
-  call s:Style('LeuvenGrayBg', s:bg, ['#a9a9a9', 0])
+  call s:h('LeuvenLiveDarkGreenHighlight', s:green_dark_fg, s:green_bg)
+  call s:h('LeuvenLiveLightRedHighlight', s:red_light_fg, s:red_bg)
 
-  call s:Style('LeuvenLightGreenBg', s:none, ['#c0e8c3', 0])
-  call s:Style('LeuvenLightCyanBg', s:none, ['#8ed3ff', 0])
+  call s:h('LeuvenYellowBgBold', s:none, s:yellow_light_bg, ['bold'])
+  call s:h('LeuvenGreenBg', s:none, s:green_bg)
+  call s:h('LeuvenCyanBg', s:none, s:cyan_fg)
+  call s:h('LeuvenGrayBg', s:bg, s:gray_bg)
 
-  call s:Style('LeuvenDarkBlueBgUnderline', s:bg, ['#5974ab', 0], ['underline'])
-  call s:Style('LeuvenDarkBlueBg', s:bg, ['#5974ab', 0])
-  call s:Style('LeuvenDarkGrayBg', s:bg,['#686868', 0])
+  call s:h('LeuvenLightGreenBg', s:none, s:green_light_bg)
+  call s:h('LeuvenLightBlueBg', s:none, s:blue_light_bg)
+  call s:h('LeuvenLightCyanBg', s:none, s:cyan_light_fg)
 
-  call s:Style('LeuvenUndercurlRed', s:none, s:none, ['undercurl'], ['#ff8080', 0])
-  call s:Style('LeuvenUndercurlYellow', s:none, s:none, ['undercurl'], ['#ffa500', 0])
-  call s:Style('LeuvenUndercurlGreen', s:none, s:none, ['undercurl'], ['#10C200', 0])
-  call s:Style('LeuvenUndercurlComment', s:none, s:none, ['undercurl'], s:comment)
+  call s:h('LeuvenDarkBlueBgUnderline', s:bg, s:blue_dark_bg, ['underline'])
+  call s:h('LeuvenDarkBlueBg', s:bg, s:blue_dark_bg)
+  call s:h('LeuvenDarkGrayBg', s:bg,s:gray_dark_bg)
 
-  call s:Style('LeuvenMutedYellowHighlight', s:comment, ['#fff68f', 0])
-  call s:Style('LeuvenMutedGrayHighlight', s:comment, ['#f0f0f0', 0])
+  call s:h('LeuvenUndercurlRed', s:none, s:none, ['undercurl'], s:red_light_fg)
+  call s:h('LeuvenUndercurlYellow', s:none, s:none, ['undercurl'], s:yellow_fg)
+  call s:h('LeuvenUndercurlGreen', s:none, s:none, ['undercurl'], s:green_light_fg)
+  call s:h('LeuvenUndercurlComment', s:none, s:none, ['undercurl'], s:gray_comment_fg)
 
-  call s:Style('LeuvenBlueonDarkGray', ['#85ceeb', 0], ['#454545', 0])
-  call s:Style('LeuvenBlueonBlue', ['#85ceeb', 0], ['#335ea8', 0])
-  call s:Style('LeuvenWhiteBoldonBlue',['#f8fbf8', 0], ['#335ea8', 0], ['bold'])
-  call s:Style('LeuvenBlackonYellow',['#000000', 0], ['#fff79f', 0])
+  call s:h('LeuvenMutedYellowHighlight', s:gray_comment_fg, s:yellow_bg)
+  call s:h('LeuvenMutedGrayHighlight', s:gray_comment_fg, s:gray_light_bg)
 
-  call s:Style('LeuvenHead1',['#3c3c3c', 0], ['#f0f0f0', 0], ['bold', 'underline'])
-  call s:Style('LeuvenHead2', ['#123555', 0], ['#e5f4fb', 0], ['bold', 'underline'])
-  call s:Style('LeuvenHead3', ['#005522', 0], ['#efffef', 0], ['bold', 'underline'])
-  call s:Style('LeuvenHead4', ['#ea6300', 0], s:bg, ['bold'])
-  call s:Style('LeuvenHead5', ['#e3258d', 0], s:bg, ['bold'])
-  call s:Style('LeuvenHead6', ['#0077cc', 0], s:bg, ['bold'])
-  call s:Style('LeuvenHead7', ['#2eae2c', 0], s:bg, ['bold'])
-  call s:Style('LeuvenHead8', ['#fd8008', 0], s:bg, ['bold'])
+  call s:h('LeuvenBlueonDarkGray', s:blue_on_fg, s:gray_dark_fg)
+  call s:h('LeuvenBlueonBlue', s:blue_on_fg, s:blue_on_bg)
+  call s:h('LeuvenWhiteBoldonBlue',s:bg, s:blue_on_bg, ['bold'])
+  call s:h('LeuvenBlackonYellow',s:black, s:yellow_search_bg)
 
-  call s:Style('LeuvenBlockMargins', ['#006666', 0], ['#ddeded', 0])
-  call s:Style('LeuvenBlockContent', ['#000088', 0], s:bg)
+  call s:h('LeuvenHead1',s:gray_h1_fg, s:gray_light_bg, ['bold', 'underline'])
+  call s:h('LeuvenHead2', s:blue_h1_fg, s:blue_bg, ['bold', 'underline'])
+  call s:h('LeuvenHead3', s:green_h3_fg, s:green_h3_bg, ['bold', 'underline'])
+  call s:h('LeuvenHead4', s:yellow_h4_fg, s:bg, ['bold'])
+  call s:h('LeuvenHead5', s:magenta_h5_fg, s:bg, ['bold'])
+  call s:h('LeuvenHead6', s:blue_h6_fg, s:bg, ['bold'])
+  call s:h('LeuvenHead7', s:green_h7_fg, s:bg, ['bold'])
+  call s:h('LeuvenHead8', s:yellow_h8_fg, s:bg, ['bold'])
+
+  call s:h('LeuvenBlockMargins', s:green_block_margins_fg, s:blue_block_margins_bg)
+  call s:h('LeuvenBlockContent', s:blue_block_content_fg, s:bg)
 "}}}
 
 " user interface {{{
   set background=light
 
   " required as some plugins will overwrite
-  call s:Style('Normal', s:fg, has('gui_running') ? s:bg : s:none) "normal text
-  call s:Style('WildMenu', s:fg, ['#ffe4ff', 0], ['bold']) "current match in 'wildmenu' completion
+  call s:h('Normal', s:fg, has('gui_running') ? s:bg : s:none) "normal text
+  call s:h('WildMenu', s:fg, s:magenta_bg, ['bold']) "current match in 'wildmenu' completion
 
   "status and tab lines
   hi! link StatusLine LeuvenWhiteBoldonBlue
@@ -172,12 +196,12 @@ endfunction
   hi! link SignColumn LeuvenSubtleBg "column where |signs| are displayed
 
   " special
-  hi! link Directory LeuvenBlue "directory names (and other special names in listings)
+  hi! link Directory LeuvenLightBlue "directory names (and other special names in listings)
 
   " diff node
   hi! link DiffChange LeuvenInvertedComment "changed line
   hi! link DiffAdd LeuvenLiveGreenHighlight "added line |diff.txt|
-  hi! link DiffDelete LeuvenLiveRedHighlight "deleted line |diff.txt|
+  hi! link DiffDelete LeuvenLiveLightRedHighlight "deleted line |diff.txt|
   hi! link DiffText LeuvenLiveYellowHighlight "changed text within a changed line |diff.txt|
 
   " msg
@@ -197,12 +221,12 @@ endfunction
   hi! link MatchParen LeuvenLightGreenBg "character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 
   " popup menu
-  hi! link Pmenu LeuvenBlueBg "normal item.
+  hi! link Pmenu LeuvenLightBlueBg "normal item.
   hi! link PmenuSel LeuvenDarkBlueBg "selected item
   hi! link PmenuThumb LeuvenDarkGrayBg "thumb of the scrollbar.
   hi! link PmenuSbar LeuvenGrayBg "scrollbar
 
-  hi! link SpecialKey LeuvenLiveRedHighlight
+  hi! link SpecialKey LeuvenLiveLightRedHighlight
 
   " spell
   hi! link SpellBad LeuvenUndercurlRed "word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
@@ -248,7 +272,7 @@ endfunction
   hi! link Boolean Constant "a boolean constant: TRUE, false
 
   hi! link Identifier LeuvenMagenta "any variable name
-  hi! link Function LeuvenBlue "function name (also: method for classes)
+  hi! link Function LeuvenLightBlue "function name (also: method for classes)
 
   hi! link Statement LeuvenDarkBlue "(*) any statement
   hi! link Keyword Statement "any other keyword
@@ -280,8 +304,8 @@ endfunction
   "" Underlined     { gui = "underline" }, -- Text that stands out, HTML links
   "" Ignore         { }, -- Left blank, hidden |hl-Ignore|
 
-  hi! link Error ErrorMsg "any erroneous construct
-  hi! link Todo LeuvenLiveRedHighlight "anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+  hi! link Error LeuvenLiveLightRedHighlight "any erroneous construct
+  hi! link Todo LeuvenLiveLightRedHighlight "anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
   "" These groups are for the native LSP client and diagnostic system. Some
   "" other LSP clients may use these groups, or use their own. Consult your
@@ -289,20 +313,20 @@ endfunction
 
   "" See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
   ""
-  " hi! link LspReferenceText LeuvenBlueBg "used for highlighting "text" references
-  " hi! link LspReferenceRead LeuvenBlueBg "used for highlighting "read" references
-  " hi! link LspReferenceWrite LeuvenBlueBg "used for highlighting "write" references
-  " hi! link LspCodeLens LeuvenBlueBg " used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
+  " hi! link LspReferenceText LeuvenLightBlueBg "used for highlighting "text" references
+  " hi! link LspReferenceRead LeuvenLightBlueBg "used for highlighting "read" references
+  " hi! link LspReferenceWrite LeuvenLightBlueBg "used for highlighting "write" references
+  " hi! link LspCodeLens LeuvenLightBlueBg " used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
   " hi! link LspCodeLensSeparator LeuvenDarkGray "used to color the separator between two or more code lens.
-  " hi! link LspSignatureActiveParameter LeuvenBlueBg "used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+  " hi! link LspSignatureActiveParameter LeuvenLightBlueBg "used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
   "" See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
   ""
-  hi! link DiagnosticError LeuvenRed "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+  hi! link DiagnosticError LeuvenLightRed "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
   hi! link DiagnosticWarn  LeuvenYellow "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
   hi! link DiagnosticInfo None "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
   hi! link DiagnosticHint None "used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-  " hi! link DiagnosticVirtualTextError LeuvenRed "used for "Error" diagnostic virtual text.
+  " hi! link DiagnosticVirtualTextError LeuvenLightRed "used for "Error" diagnostic virtual text.
   " hi! link DiagnosticVirtualTextWarn LeuvenYellow "used for "Warn" diagnostic virtual text.
   hi! link DiagnosticVirtualTextInfo LeuvenComment "used for "Info" diagnostic virtual text.
   hi! link DiagnosticVirtualTextHint LeuvenComment "used for "Hint" diagnostic virtual text.
@@ -310,11 +334,11 @@ endfunction
   hi! link DiagnosticUnderlineWarn LeuvenUndercurlYellow "used to underline "Warn" diagnostics.
   hi! link DiagnosticUnderlineInfo LeuvenUndercurlComment "used to underline "Info" diagnostics.
   hi! link DiagnosticUnderlineHint LeuvenUndercurlComment "used to underline "Hint" diagnostics.
-  hi! link DiagnosticFloatingError LeuvenLiveRedHighlight "used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+  hi! link DiagnosticFloatingError LeuvenLiveLightRedHighlight "used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
   hi! link DiagnosticFloatingWarn LeuvenLiveYellowHighlight "used to color "Warn" diagnostic messages in diagnostics float.
   hi! link DiagnosticFloatingInfo LeuvenGrayBg "used to color "Info" diagnostic messages in diagnostics float.
   hi! link DiagnosticFloatingHint LeuvenGrayBg "used to color "Hint" diagnostic messages in diagnostics float.
-  " hi! link DiagnosticSignError LeuvenRed "used for "Error" signs in sign column.
+  " hi! link DiagnosticSignError LeuvenLightRed "used for "Error" signs in sign column.
   " hi! link DiagnosticSignWarn LeuvenYellow "used for "Warn" signs in sign column.
   hi! link DiagnosticSignInfo LeuvenComment "used for "Info" signs in sign column.
   hi! link DiagnosticSignHint LeuvenComment "used for "Hint" signs in sign column.
@@ -341,7 +365,7 @@ endfunction
   hi! link TSField LeuvenFg "object and struct fields
   "" TSFloat              { } , -- Floating-point number literals.
   "" TSFunction           { } , -- Function calls and definitions.
-  hi! link TSFuncBuiltin LeuvenLiveBlueHighlight "built-in functions: `print` in Lua.
+  " hi! link TSFuncBuiltin LeuvenLiveBlueHighlight "built-in functions: `print` in Lua.
   "" TSFuncMacro          { } , -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
   "" TSInclude            { } , -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
   hi! link TSKeyword LeuvenDarkBlue "keywords that don't fit into other categories.
@@ -398,9 +422,19 @@ endfunction
   hi! link TSTypeBuiltin TSConstBuiltin "built-in types: `i32` in Rust.
   hi! link TSVariable LeuvenFg
   hi! link TSVariableBuiltin TSConstBuiltin "variable names defined by the language: `this` or `self` in Javascript.
-
   hi! link TSBlockMargins LeuvenBlockMargins "margins of code blocks
   hi! link TSBlockContent LeuvenBlockContent "code block contents
+" }}}
+
+" ansi {{{
+if has('nvim')
+  for s:i in range(16)
+    let g_terminal_color_{s:i} = g:leuven#terminal_ansi_colors[s:i]
+  endfor
+endif
+if has('terminal')
+  let g:terminal_ansi_colors = g:leuven#terminal_ansi_colors
+endif
 " }}}
 
 " vim: fdm=marker ts=2 sts=2 sw=2 fdl=0:
