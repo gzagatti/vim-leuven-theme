@@ -67,6 +67,8 @@ endfunction
 " highlight groups {{{
   call s:Style('LeuvenFg', s:fg, s:none)
 
+  call s:Style('LeuvenSubtleBg', s:none, ['#f4f4f1', 0])
+
   call s:Style('LeuvenComment', s:comment)
   call s:Style('LeuvenInvertedComment', s:bg, s:comment)
 
@@ -90,7 +92,6 @@ endfunction
 
   call s:Style('LeuvenMutedYellowHighlight', s:comment, ['#fff68f', 0])
 
-  call s:Style('LeuvenMargins', ['#006666', 0], ['#ddeded', 0])
 
   call s:Style('LeuvenTitle',['#3c3c3c', 0], ['#f0f0f0', 0], ['bold', 'underline'])
   hi! link LeuvenHead1 LeuvenTitle
@@ -102,7 +103,7 @@ endfunction
   call s:Style('LeuvenHead7', ['#2eae2c', 0], s:bg, ['bold'])
   call s:Style('LeuvenHead8', ['#fd8008', 0], s:bg, ['bold'])
 
-  hi! link LeuvenBlockMargins LeuvenMargins
+  call s:Style('LeuvenBlockMargins', ['#006666', 0], ['#ddeded', 0])
   call s:Style('LeuvenBlockContent', ['#000088', 0], s:bg)
 
 "}}}
@@ -137,8 +138,8 @@ endfunction
   " support columns
   hi! link LineNr LeuvenComment "line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
   hi! link EndOfBuffer LeuvenComment "filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
-  hi! link FoldColumn LeuvenInvertedComment "'foldcolumn'
-  hi! link SignColumn LeuvenInvertedComment "column where |signs| are displayed
+  hi! link FoldColumn LeuvenSubtleBg "'foldcolumn'
+  hi! link SignColumn LeuvenSubtleBg "column where |signs| are displayed
 
   " special
   hi! link Directory Function "directory names (and other special names in listings)
@@ -158,7 +159,7 @@ endfunction
   hi! link Winseparator LeuvenDarkGray "separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
 
   " fold
-  hi! link Folded LeuvenMargins "line used for closed folds
+  hi! link Folded LeuvenSubtleBg "line used for closed folds
 
   " search
   call s:Style('IncSearch', s:bg, ['#5974ab', 0], ['underline']) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
