@@ -4,7 +4,6 @@ endif
 
 hi! link NeogitDiffAddHighlight DiffAdd
 hi! link NeogitDiffDeleteHighlight DiffDelete
-" hi! link NeogitDiffContextHighlight
-" hi! link NeogitHunkHeader
-" hi! link NeogitHunkHeaderHighlight
-
+hi! link NeogitDiffContextHighlight LeuvenGrayBg
+hi! link NeogitHunkHeader LeuvenDarkGrayBg
+hi! link NeogitHunkHeaderHighlight LeuvenDarkGrayBg

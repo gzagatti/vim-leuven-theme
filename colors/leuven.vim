@@ -11,6 +11,11 @@ endif
 
 let g:colors_name = 'leuven'
 
+if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
+  finish
+endif
+
+
 "palette {{{
 let s:none                   = ['NONE', 'NONE']
 let s:black                  = g:leuven#palette.black
@@ -40,7 +45,7 @@ let s:yellow_fg              = g:leuven#palette.yellow_fg
 let s:yellow_bg              = g:leuven#palette.yellow_bg
 let s:yellow_search_bg       = g:leuven#palette.yellow_search_bg
 let s:yellow_light_bg        = g:leuven#palette.yellow_light_bg
-let s:blue_h1_fg             = g:leuven#palette.blue_h1_fg
+let s:blue_h2_fg             = g:leuven#palette.blue_h2_fg
 let s:blue_block_content_fg  = g:leuven#palette.blue_block_content_fg
 let s:blue_fg                = g:leuven#palette.blue_fg
 let s:blue_on_bg             = g:leuven#palette.blue_on_bg
@@ -61,10 +66,6 @@ let s:cyan_bg                = g:leuven#palette.cyan_bg
 let s:white_dark_bg          = g:leuven#palette.white_dark_bg
 let s:bg                     = g:leuven#palette.bg
 "}}}
-
-if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
-  finish
-endif
 
 function s:h(hlgroup, fg, ...) "bg, attr_list, special
   let l:fg = copy(a:fg)
@@ -92,7 +93,13 @@ endfunction
   call s:h('LeuvenSubtleBg', s:none, s:white_dark_bg)
 
   call s:h('LeuvenComment', s:gray_comment_fg)
-  call s:h('LeuvenInvertedComment', s:bg, s:gray_comment_fg)
+  " lualine will not pickup the color from cterm even when it should, so we
+  " modify the hex color accordingly
+  if !(has('termguicolors') && &termguicolors)
+    call s:h('LeuvenInvertedComment', ['#eeeeee', 0], s:gray_comment_fg)
+  else
+    call s:h('LeuvenInvertedComment', s:bg, s:gray_comment_fg)
+  endif
 
   call s:h('LeuvenMagenta', s:magenta_fg)
   call s:h('LeuvenGreen', s:green_fg)
@@ -112,7 +119,7 @@ endfunction
   call s:h('LeuvenLiveRedHighlight', s:red_fg, s:red_bg)
   call s:h('LeuvenLiveYellowHighlight', s:yellow_fg, s:yellow_light_bg)
   call s:h('LeuvenLiveGreenHighlight', s:green_light_fg, s:green_bg)
-  call s:h('LeuvenLiveBlueHighlight', s:blue_h1_fg, s:blue_bg)
+  call s:h('LeuvenLiveBlueHighlight', s:blue_h2_fg, s:blue_bg)
   call s:h('LeuvenLiveMagentaHighlight', s:magenta_fg, s:magenta_bg)
 
   call s:h('LeuvenLiveDarkGreenHighlight', s:green_dark_fg, s:green_bg)
@@ -145,7 +152,7 @@ endfunction
   call s:h('LeuvenBlackonYellow',s:black, s:yellow_search_bg)
 
   call s:h('LeuvenHead1',s:gray_h1_fg, s:gray_light_bg, ['bold', 'underline'])
-  call s:h('LeuvenHead2', s:blue_h1_fg, s:blue_bg, ['bold', 'underline'])
+  call s:h('LeuvenHead2', s:blue_h2_fg, s:blue_bg, ['bold', 'underline'])
   call s:h('LeuvenHead3', s:green_h3_fg, s:green_h3_bg, ['bold', 'underline'])
   call s:h('LeuvenHead4', s:yellow_h4_fg, s:bg, ['bold'])
   call s:h('LeuvenHead5', s:magenta_h5_fg, s:bg, ['bold'])
