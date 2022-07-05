@@ -26,4 +26,6 @@ hi! link OrgDone LeuvenLiveGreenHighlight
 
 hi! link OrgTSBlock TSBlockMargins
 
+hi! link OrgTSCheckbox Normal
+
 " vim: fdm=marker ts=2 sts=2 sw=2 fdl=0:
