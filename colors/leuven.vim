@@ -134,6 +134,7 @@ call s:h('LeuvenLightBlueBg'            , s:none                   , s:blue_ligh
 call s:h('LeuvenLightCyanBg'            , s:none                   , s:cyan_light_fg                                       )
 
 call s:h('LeuvenLightBlueUnderline'     , s:blue_light_fg          , s:none            , ['underline'] , s:blue_light_fg   )
+call s:h('LeuvenLightBlueBgUnderline'   , s:blue_light_fg          , s:bg              , ['underline'] , s:blue_light_fg   )
 call s:h('LeuvenDarkBlueBgUnderline'    , s:bg                     , s:blue_dark_bg    , ['underline']                     )
 call s:h('LeuvenDarkBlueBg'             , s:bg                     , s:blue_dark_bg                                        )
 call s:h('LeuvenDarkGrayBg'             , s:bg                     , s:gray_dark_bg                                        )

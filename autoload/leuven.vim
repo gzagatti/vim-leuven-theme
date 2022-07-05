@@ -73,8 +73,8 @@ let g:leuven#terminal_ansi_colors = [
 func! leuven#should_abort(...)
     if ! exists('g:colors_name') || g:colors_name !=# 'leuven'
       return 1
-    elseif a:0 > 0 
-          \ && (! exists('b:current_syntax') || index(a:000, b:current_syntax) == -1) 
+    elseif a:0 > 0
+          \ && (! exists('b:current_syntax') || index(a:000, b:current_syntax) == -1)
           \ && index(a:000, &filetype) == -1
       return 1
     endif

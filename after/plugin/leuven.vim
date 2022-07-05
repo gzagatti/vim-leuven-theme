@@ -10,7 +10,6 @@ endif
 " match the leuven specification.
 " see :h nvim-treesitter-highlights.
 if exists('g:loaded_nvim_treesitter')
-
   hi! link TSComment         Comment             " line comments and block comments.
   hi! link TSConstant        Constant            " constants identifiers
   hi! link TSConstBuiltin    Constant            " built-in constant values: `nil` in Lua.

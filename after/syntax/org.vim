@@ -28,4 +28,6 @@ hi! link OrgTSBlock TSBlockMargins
 
 hi! link OrgTSCheckbox Comment
 
+hi! link OrgTSTimestampActive LeuvenLightBlueBgUnderline
+
 " vim: fdm=marker ts=2 sts=2 sw=2 fdl=0:
