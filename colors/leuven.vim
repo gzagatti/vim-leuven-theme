@@ -123,6 +123,7 @@ call s:h('LeuvenLiveMagentaHighlight'   , s:magenta_fg             , s:magenta_b
 
 call s:h('LeuvenLiveDarkGreenHighlight' , s:green_dark_fg          , s:green_bg                                            )
 call s:h('LeuvenLiveLightRedHighlight'  , s:red_light_fg           , s:red_bg                                              )
+call s:h('LeuvenLiveLightGreenHighlight'  , s:green_fg           , s:green_h3_bg, ['bold']                                              )
 
 call s:h('LeuvenYellowBgBold'           , s:none                   , s:yellow_light_bg , ['bold']                          )
 call s:h('LeuvenGreenBg'                , s:none                   , s:green_bg                                            )
