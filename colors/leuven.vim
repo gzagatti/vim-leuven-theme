@@ -133,6 +133,7 @@ call s:h('LeuvenLightGreenBg'           , s:none                   , s:green_lig
 call s:h('LeuvenLightBlueBg'            , s:none                   , s:blue_light_bg                                       )
 call s:h('LeuvenLightCyanBg'            , s:none                   , s:cyan_light_fg                                       )
 
+call s:h('LeuvenLightBlueUnderline'     , s:blue_light_fg          , s:none            , ['underline'] , s:blue_light_fg   )
 call s:h('LeuvenDarkBlueBgUnderline'    , s:bg                     , s:blue_dark_bg    , ['underline']                     )
 call s:h('LeuvenDarkBlueBg'             , s:bg                     , s:blue_dark_bg                                        )
 call s:h('LeuvenDarkGrayBg'             , s:bg                     , s:gray_dark_bg                                        )
@@ -276,9 +277,9 @@ hi! link  Repeat                    Statement                   " for, do, while
 hi! link  Operator                  Statement                   " sizeof", "+", "*", etc.
 hi! link  Exception                 Statement                   " try, catch, throw
 
-
 hi! link  Label                     LeuvenMutedYellowHighlight  " case, default, etc.
 hi! link  Tag                       Label                       " you can use CTRL-] on this
+hi! link  Underlined                LeuvenLightBlueUnderline    " text that stands out, HTML links
 
 hi! link  Preproc                   LeuvenLiveBlueHighlight     " (*) generic preprocessor
 
