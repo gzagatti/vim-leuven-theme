@@ -1,4 +1,6 @@
-local palette = vim.g["leuven#palette"]
+-- leuven lualine theme
+
+local palette = vim.g['leuven#palette']
 local colors = {
   bg              = palette.bg[1],
   gray_dark_bg    = palette.gray_dark_bg[1],
@@ -14,27 +16,27 @@ local colors = {
 
 -- adjust colors when termguicolors is not available
 if vim.opt.termguicolors:get() == false then
-  colors.bg = "#eeeeee"
-  colors.blue_on_bg = "#005faf"
+  colors.bg = '#eeeeee'
+  colors.blue_on_bg = '#005faf'
 end
 
 return {
   normal = {
-    a = {fg = colors.bg, bg = colors.blue_on_bg, gui = "bold"},
+    a = {fg = colors.bg, bg = colors.blue_on_bg, gui = 'bold'},
     b = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
     c = {fg = colors.blue_on_fg, bg = colors.gray_dark_fg},
     y = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
     z = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
   },
   insert = {
-    a = {fg = colors.green_light_fg, bg = colors.green_bg, gui = "bold"},
+    a = {fg = colors.green_light_fg, bg = colors.green_bg, gui = 'bold'},
     b = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
     c = {fg = colors.blue_on_fg, bg = colors.gray_dark_fg},
     y = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
     z = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
   },
   visual = {
-    a = {fg = colors.yellow_fg, bg = colors.yellow_light_bg, gui = "bold"},
+    a = {fg = colors.yellow_fg, bg = colors.yellow_light_bg, gui = 'bold'},
     b = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
     c = {fg = colors.blue_on_fg, bg = colors.gray_dark_fg},
     y = {fg = colors.blue_on_fg, bg = colors.blue_on_bg},
