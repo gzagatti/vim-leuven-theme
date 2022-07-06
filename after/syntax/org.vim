@@ -27,7 +27,9 @@ hi! link OrgDone              LeuvenLiveGreenHighlight
 hi! link OrgTSBlock           TSBlockMargins
 hi! link OrgTSCheckbox        Comment
 hi! link OrgTSTimestampActive LeuvenLightBlueBgUnderline
-hi! link OrgTSPropertyName    LeuvenLiveLightGreenHighlight
 hi! link OrgTSPropertyDrawer  LeuvenGreen
+hi! link OrgTSPropertyMargin  LeuvenLiveLightGreenHighlight
+hi! link OrgTSDrawer          LeuvenGreen
+hi! link OrgTSDrawerMargin    LeuvenLiveLightGreenHighlight
 
 " vim: fdm=marker ts=2 sts=2 sw=2 fdl=0:
