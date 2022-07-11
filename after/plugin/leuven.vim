@@ -10,6 +10,8 @@ endif
 " match the leuven specification.
 " see :h nvim-treesitter-highlights.
 if exists('g:loaded_nvim_treesitter')
+  hi! link TSBlockMargins    LeuvenBlockMargins  " margins of code blocks
+  hi! link TSBlockContent    LeuvenBlockContent  " code block contents
   hi! link TSComment         Comment             " line comments and block comments.
   hi! link TSConstant        Constant            " constants identifiers
   hi! link TSConstBuiltin    Constant            " built-in constant values: `nil` in Lua.
@@ -39,8 +41,6 @@ if exists('g:loaded_nvim_treesitter')
   hi! link TSHead6           LeuvenHead6         " text that is part of a heading level 6.
   hi! link TSHead7           LeuvenHead7         " text that is part of a heading level 7.
   hi! link TSHead8           LeuvenHead8         " text that is part of a heading level 8.
-  hi! link TSBlockMargins    LeuvenBlockMargins  " margins of code blocks
-  hi! link TSBlockContent    LeuvenBlockContent  " code block contents
 endif
 "}}}
 

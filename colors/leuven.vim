@@ -16,54 +16,54 @@ if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 
 endif
 
 " palette {{{
-let s:none                   = ['NONE', 'NONE']
-let s:black                  = g:leuven#palette.black
-let s:fg                     = g:leuven#palette.fg
-let s:gray_h1_fg             = g:leuven#palette.gray_h1_fg
-let s:gray_dark_fg           = g:leuven#palette.gray_dark_fg
-let s:gray_whitespace        = g:leuven#palette.gray_whitespace
-let s:gray_dark_bg           = g:leuven#palette.gray_dark_bg
-let s:gray_comment_fg        = g:leuven#palette.gray_comment_fg
-let s:gray_bg                = g:leuven#palette.gray_bg
-let s:gray_light_bg          = g:leuven#palette.gray_light_bg
-let s:red_fg                 = g:leuven#palette.red_fg
-let s:red_light_fg           = g:leuven#palette.red_light_fg
-let s:red_bg                 = g:leuven#palette.red_bg
-let s:green_block_margins_fg = g:leuven#palette.green_block_margins_fg
-let s:green_h3_fg            = g:leuven#palette.green_h3_fg
-let s:green_dark_fg          = g:leuven#palette.green_dark_fg
-let s:green_fg               = g:leuven#palette.green_fg
-let s:green_light_fg         = g:leuven#palette.green_light_fg
-let s:green_h7_fg            = g:leuven#palette.green_h7_fg
-let s:green_light_bg         = g:leuven#palette.green_light_bg
-let s:green_bg               = g:leuven#palette.green_bg
-let s:green_h3_bg            = g:leuven#palette.green_h3_bg
-let s:yellow_h4_fg           = g:leuven#palette.yellow_h4_fg
-let s:yellow_h8_fg           = g:leuven#palette.yellow_h8_fg
-let s:yellow_fg              = g:leuven#palette.yellow_fg
-let s:yellow_bg              = g:leuven#palette.yellow_bg
-let s:yellow_search_bg       = g:leuven#palette.yellow_search_bg
-let s:yellow_light_bg        = g:leuven#palette.yellow_light_bg
-let s:blue_h2_fg             = g:leuven#palette.blue_h2_fg
-let s:blue_block_content_fg  = g:leuven#palette.blue_block_content_fg
-let s:blue_fg                = g:leuven#palette.blue_fg
-let s:blue_on_bg             = g:leuven#palette.blue_on_bg
-let s:blue_dark_bg           = g:leuven#palette.blue_dark_bg
-let s:blue_light_fg          = g:leuven#palette.blue_light_fg
-let s:blue_h6_fg             = g:leuven#palette.blue_h6_fg
-let s:blue_on_fg             = g:leuven#palette.blue_on_fg
-let s:blue_block_margins_bg  = g:leuven#palette.blue_block_margins_bg
-let s:blue_bg                = g:leuven#palette.blue_bg
-let s:blue_light_bg          = g:leuven#palette.blue_light_bg
-let s:magenta_dark_fg        = g:leuven#palette.magenta_dark_fg
-let s:magenta_fg             = g:leuven#palette.magenta_fg
-let s:magenta_h5_fg          = g:leuven#palette.magenta_h5_fg
-let s:magenta_bg             = g:leuven#palette.magenta_bg
-let s:cyan_fg                = g:leuven#palette.cyan_fg
-let s:cyan_light_fg          = g:leuven#palette.cyan_light_fg
-let s:cyan_bg                = g:leuven#palette.cyan_bg
-let s:white_dark_bg          = g:leuven#palette.white_dark_bg
-let s:bg                     = g:leuven#palette.bg
+let s:none             = ['NONE', 'NONE']
+let s:black            = g:leuven#palette.black
+let s:fg               = g:leuven#palette.fg
+let s:gray_h1_fg       = g:leuven#palette.gray_h1_fg
+let s:gray_dark_fg     = g:leuven#palette.gray_dark_fg
+let s:gray_whitespace  = g:leuven#palette.gray_whitespace
+let s:gray_dark_bg     = g:leuven#palette.gray_dark_bg
+let s:gray_comment_fg  = g:leuven#palette.gray_comment_fg
+let s:gray_bg          = g:leuven#palette.gray_bg
+let s:gray_light_bg    = g:leuven#palette.gray_light_bg
+let s:red_fg           = g:leuven#palette.red_fg
+let s:red_light_fg     = g:leuven#palette.red_light_fg
+let s:red_bg           = g:leuven#palette.red_bg
+let s:green_margins_fg = g:leuven#palette.green_margins_fg
+let s:green_h3_fg      = g:leuven#palette.green_h3_fg
+let s:green_dark_fg    = g:leuven#palette.green_dark_fg
+let s:green_fg         = g:leuven#palette.green_fg
+let s:green_light_fg   = g:leuven#palette.green_light_fg
+let s:green_h7_fg      = g:leuven#palette.green_h7_fg
+let s:green_light_bg   = g:leuven#palette.green_light_bg
+let s:green_bg         = g:leuven#palette.green_bg
+let s:green_h3_bg      = g:leuven#palette.green_h3_bg
+let s:yellow_h4_fg     = g:leuven#palette.yellow_h4_fg
+let s:yellow_h8_fg     = g:leuven#palette.yellow_h8_fg
+let s:yellow_fg        = g:leuven#palette.yellow_fg
+let s:yellow_bg        = g:leuven#palette.yellow_bg
+let s:yellow_search_bg = g:leuven#palette.yellow_search_bg
+let s:yellow_light_bg  = g:leuven#palette.yellow_light_bg
+let s:blue_h2_fg       = g:leuven#palette.blue_h2_fg
+let s:blue_content_fg  = g:leuven#palette.blue_content_fg
+let s:blue_fg          = g:leuven#palette.blue_fg
+let s:blue_on_bg       = g:leuven#palette.blue_on_bg
+let s:blue_dark_bg     = g:leuven#palette.blue_dark_bg
+let s:blue_light_fg    = g:leuven#palette.blue_light_fg
+let s:blue_h6_fg       = g:leuven#palette.blue_h6_fg
+let s:blue_on_fg       = g:leuven#palette.blue_on_fg
+let s:blue_margins_bg  = g:leuven#palette.blue_margins_bg
+let s:blue_bg          = g:leuven#palette.blue_bg
+let s:blue_light_bg    = g:leuven#palette.blue_light_bg
+let s:magenta_dark_fg  = g:leuven#palette.magenta_dark_fg
+let s:magenta_fg       = g:leuven#palette.magenta_fg
+let s:magenta_h5_fg    = g:leuven#palette.magenta_h5_fg
+let s:magenta_bg       = g:leuven#palette.magenta_bg
+let s:cyan_fg          = g:leuven#palette.cyan_fg
+let s:cyan_light_fg    = g:leuven#palette.cyan_light_fg
+let s:cyan_bg          = g:leuven#palette.cyan_bg
+let s:white_dark_bg    = g:leuven#palette.white_dark_bg
+let s:bg               = g:leuven#palette.bg
 " }}}
 
 function s:h(hlgroup, fg, ...) "bg, attr_list, special
@@ -88,7 +88,7 @@ call s:h('LeuvenFg'                      , s:fg                                 
 
 call s:h('LeuvenWhiteSpace'              , s:gray_whitespace                                                                )
 
-call s:h('LeuvenSubtle'                  , s:blue_block_content_fg  , s:white_dark_bg                                       )
+call s:h('LeuvenSubtle'                  , s:blue_content_fg        , s:white_dark_bg                                       )
 call s:h('LeuvenSubtleBg'                , s:none                   , s:white_dark_bg                                       )
 
 " lualine will not pickup the color from cterm even when it should, so we
@@ -162,8 +162,13 @@ call s:h('LeuvenHead6'                   , s:blue_h6_fg             , s:bg      
 call s:h('LeuvenHead7'                   , s:green_h7_fg            , s:bg              , ['bold']                          )
 call s:h('LeuvenHead8'                   , s:yellow_h8_fg           , s:bg              , ['bold']                          )
 
-call s:h('LeuvenBlockMargins'            , s:green_block_margins_fg , s:blue_block_margins_bg                               )
-call s:h('LeuvenBlockContent'            , s:blue_block_content_fg  , s:bg                                                  )
+if g:leuven_original == 1
+call s:h('LeuvenBlockMargins'            , s:green_margins_fg       , s:blue_margins_bg , ['underline']                     )
+call s:h('LeuvenBlockContent'            , s:blue_content_fg        , s:bg              , ['nocombine', 'NONE']             )
+else
+call s:h('LeuvenBlockMargins'            , s:green_margins_fg       , s:blue_margins_bg ,                                   )
+call s:h('LeuvenBlockContent'            , s:blue_content_fg        , s:bg              ,                                   )
+endif
 " }}}
 
 " user interface {{{
