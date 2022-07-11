@@ -1,0 +1,65 @@
+* Leuven Theme for Vim
+
+[[https://www.paypal.com/donate/?business=ZL3QUL2RFNBGC&no_recurring=0&item_name=vim-leuven-theme&currency_code=USD][https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif]]
+
+The awesome [[https://github.com/fniessen/emacs-leuven-theme][Emacs color theme]] on white background --- now on Vim.
+
+[[./screenshot.png]]
+
+** Installation
+
+Install via any package management system, for example [[https://github.com/wbthomason/packer.nvim][packer]] :
+ 
+#+begin_src lua
+use { 'gzagatti/vim-leuven-theme' }
+#+end_src
+
+To ensure full color scheme support, add the following items to your configuration:
+
+#+begin_src lua
+vim.opt.termguicolors = true
+vim.opt.guicursor = 'a:blinkon0-Cursor,i-ci:ver100'
+vim.cmd [[ colorscheme leuven ]]
+#+end_src
+
+Finally, if using Vim from a terminal, make sure to modify your [[#terminal][terminal colors]].
+
+If your terminal does not have /true color/ (24 bit) support, Leuven will fall back to 256 colors which results in a less nuanced, but still fully operational, theme.
+
+** Terminal
+
+Unfortunately, terminals were designed with dark backgrounds in mind. When using a brighter color on a bright background, the text will invariably be harder to read. Since the Leuven theme heavily relies on text background color for its effects, it assigns background colors to the sequence of high-intensity colors ~8-15~ in a terminal. That might cause messages printed with high-intensity colors in the terminal such as errors or warnings to be hard to read. 
+
+With that being said, it is possible to modify the output of many programs to obtain the Leuven effect starting with ~ls~:
+
+#+begin_src sh
+export LS_COLORS="no=00:fi=00:di=34::ln=32;102:so=37;107:pi=1;33:ex=31:bd=37;107:cd=37;107:su=37;107:sg=37;107:tw=35:ow=35"
+#+end_src
+
+Check configuration for other programs below:
+
+- [[./dist/kitty/leuven.conf][Kitty]]
+
+** Design
+
+Leuven was originally developed for Emacs. This color scheme makes clever use of the text background color to make it feel like using a highlighter on the text editor. 
+
+While I have made an effort to keep the Vim port aligned with the original design, I have also made some modifications:
+
+- Reduced the Emacs color palette from close to 350 different colors to 47, in order to facilitate maintenance. Check the Vim palette [[./palettes/leuven-vim.gpl][here]].
+
+- Changed the default background color from white (~#fffff~) to light grayish lime green (~#f8fbf8~), and the default foreground from black (~#000000~) to very dark gray (~#333333~), in order to ease the brightness of the background on the eyes over extended working hours.
+
+- Changed the margin of code blocks in org or markdown files from beige to cyan tints.
+
+- Unfortunately, Vim or Neovim do not allow highlights to modify the background of a whole line, thus it is not possible to modify the background color of code blocks in org or markdown files. (If you know a method to do so, please feel do let me know by opening an issue.)
+
+If you prefer to use the original background and foregound colors, see the [[#options][options below]].
+
+** Options
+
+- ~g:leuven_original~ :: uses the original Emacs background and foreground colors.
+
+** Acknowledgements
+
+I would like to thank the creators of the original [[https://github.com/fniessen/emacs-leuven-theme][Emacs Leuven theme]] who served as the inspiration for this project.
