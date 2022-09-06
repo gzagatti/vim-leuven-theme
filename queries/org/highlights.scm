@@ -1,5 +1,5 @@
-(block) @TSBlockMargins
-(block contents: (contents) @TSBlockContent)
+(block) @block.margins
+(block contents: (contents) @block)
 (property_drawer
   ":properties:" @OrgTSPropertyMargin
   (property ":" @OrgTSPropertyMargin name: (expr) @OrgTSPropertyMargin ":" @OrgTSPropertyMargin)

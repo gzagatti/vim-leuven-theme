@@ -1,8 +1,8 @@
-(atx_heading (atx_h1_marker)) @TSHead1
-(atx_heading (atx_h2_marker) heading_content: (inline) @TSHead2) @TSHead2
-(atx_heading (atx_h3_marker) heading_content: (inline) @TSHead3) @TSHead3
-(atx_heading (atx_h4_marker) heading_content: (inline) @TSHead4) @TSHead4
-(atx_heading (atx_h5_marker) heading_content: (inline) @TSHead5) @TSHead5
-(atx_heading (atx_h6_marker) heading_content: (inline) @TSHead6) @TSHead6
+(atx_heading (atx_h1_marker)) @text.head1
+(atx_heading (atx_h2_marker) heading_content: (inline) @text.head2) @text.head2
+(atx_heading (atx_h3_marker) heading_content: (inline) @text.head3) @text.head3
+(atx_heading (atx_h4_marker) heading_content: (inline) @text.head4) @text.head4
+(atx_heading (atx_h5_marker) heading_content: (inline) @text.head5) @text.head5
+(atx_heading (atx_h6_marker) heading_content: (inline) @text.head6) @text.head6
 
-(fenced_code_block (code_fence_content) @TSBlockContent) @TSBlockMargins
+; (fenced_code_block (code_fence_content) @text.block) @text.block.margins

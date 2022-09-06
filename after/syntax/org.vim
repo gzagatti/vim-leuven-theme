@@ -2,29 +2,29 @@ if leuven#should_abort('org')
   finish
 endif
 
-hi! link OrgHeadlineLevel1    TSHead1
-hi! link OrgHeadlineLevel2    TSHead2
-hi! link OrgHeadlineLevel3    TSHead3
-hi! link OrgHeadlineLevel4    TSHead4
-hi! link OrgHeadlineLevel5    TSHead5
-hi! link OrgHeadlineLevel6    TSHead6
-hi! link OrgHeadlineLevel7    TSHead7
-hi! link OrgHeadlineLevel8    TSHead8
+hi! link OrgHeadlineLevel1    @text.head1
+hi! link OrgHeadlineLevel2    @text.head2
+hi! link OrgHeadlineLevel3    @text.head3
+hi! link OrgHeadlineLevel4    @text.head4
+hi! link OrgHeadlineLevel5    @text.head5
+hi! link OrgHeadlineLevel6    @text.head6
+hi! link OrgHeadlineLevel7    @text.head7
+hi! link OrgHeadlineLevel8    @text.head8
 
-hi! link OrgTSHeadlineLevel1  TSHead1
-hi! link OrgTSHeadlineLevel1  TSHead1
-hi! link OrgTSHeadlineLevel2  TSHead2
-hi! link OrgTSHeadlineLevel3  TSHead3
-hi! link OrgTSHeadlineLevel4  TSHead4
-hi! link OrgTSHeadlineLevel5  TSHead5
-hi! link OrgTSHeadlineLevel6  TSHead6
-hi! link OrgTSHeadlineLevel7  TSHead7
-hi! link OrgTSHeadlineLevel8  TSHead8
+hi! link OrgTSHeadlineLevel1  @text.head1
+hi! link OrgTSHeadlineLevel1  @text.head1
+hi! link OrgTSHeadlineLevel2  @text.head2
+hi! link OrgTSHeadlineLevel3  @text.head3
+hi! link OrgTSHeadlineLevel4  @text.head4
+hi! link OrgTSHeadlineLevel5  @text.head5
+hi! link OrgTSHeadlineLevel6  @text.head6
+hi! link OrgTSHeadlineLevel7  @text.head7
+hi! link OrgTSHeadlineLevel8  @text.head8
 
 hi! link OrgTODO              LeuvenLiveRedHighlight
 hi! link OrgDone              LeuvenLiveGreenHighlight
 
-hi! link OrgTSBlock           TSBlockMargins
+hi! link OrgTSBlock           @block.margins
 hi! link OrgTSCheckbox        Comment
 hi! link OrgTSTimestampActive LeuvenLightBlueBgUnderline
 hi! link OrgTSPropertyDrawer  LeuvenGreen
