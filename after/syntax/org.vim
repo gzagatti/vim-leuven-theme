@@ -24,7 +24,7 @@ hi! link OrgTSHeadlineLevel8  @text.head8
 hi! link OrgTODO              LeuvenLiveRedHighlight
 hi! link OrgDone              LeuvenLiveGreenHighlight
 
-hi! link OrgTSBlock           @block.margins
+hi! link OrgTSLatex           @text.math
 hi! link OrgTSCheckbox        Comment
 hi! link OrgTSTimestampActive LeuvenLightBlueBgUnderline
 hi! link OrgTSPropertyDrawer  LeuvenGreen
