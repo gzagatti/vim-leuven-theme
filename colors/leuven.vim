@@ -85,6 +85,7 @@ endfunction
 
 " highlight groups {{{
 call s:h('LeuvenFg'                      , s:fg                                                                             )
+call s:h('LeuvenEmphasis'                , s:none                   , s:none            , ['bold']                          )
 
 call s:h('LeuvenWhiteSpace'              , s:gray_whitespace                                                                )
 
@@ -232,7 +233,6 @@ hi! link  Search                    LeuvenBlackonYellow         " last search pa
                                                                 " items that need to stand out.
 hi! link  MatchParen                LeuvenLightGreenBg          " character under the cursor or just before it, if it is a paired bracket, and
                                                                 " its match, see :h pi_paren.txt.
-
 " popup menu
 hi! link  Pmenu                     LeuvenLightBlueBg           " normal item.
 hi! link  PmenuSel                  LeuvenDarkBlueBg            " selected item
