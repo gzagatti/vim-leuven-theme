@@ -12,6 +12,7 @@ endif
 if exists('g:loaded_nvim_treesitter')
   hi! link @block            LeuvenBlockContent " code block contents
   hi! link @block.margins    LeuvenBlockMargins " margins of code blocks
+  hi! link @block.params     LeuvenBlockParams  " parameters in margins of code blocks
   hi! link @comment          Comment            " line comments and block comments.
   hi! link @constant         Constant           " constants identifiers
   hi! link @constant.builtin Constant           " built-in constant values: `nil` in Lua.

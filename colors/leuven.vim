@@ -168,6 +168,7 @@ call s:h('LeuvenBlockMargins'            , s:green_margins_fg       , s:blue_mar
 call s:h('LeuvenBlockContent'            , s:blue_content_fg        , s:bg              , ['nocombine', 'NONE']             )
 else
 call s:h('LeuvenBlockMargins'            , s:green_margins_fg       , s:blue_margins_bg ,                                   )
+call s:h('LeuvenBlockParams'             , s:green_margins_fg       , s:none            ,                                   )
 call s:h('LeuvenBlockContent'            , s:blue_content_fg        , s:bg              ,                                   )
 endif
 " }}}
