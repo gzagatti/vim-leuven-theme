@@ -34,15 +34,14 @@ if exists('g:loaded_nvim_treesitter')
   hi! link @type.builtin     TSConstBuiltin     " built-in types: `i31` in Rust.
   hi! link @variable         LeuvenFg           " Variable names that don't fit into other categories.
   hi! link @variable.builtin TSConstBuiltin     " variable names defined by the language: `this` or `self` in Javascript.
-  hi! link @text.title       LeuvenHead1        " text that is part of a title.
-  hi! link @text.head1       LeuvenHead1        " text that is part of a heading level 1.
-  hi! link @text.head2       LeuvenHead2        " text that is part of a heading level 2.
-  hi! link @text.head3       LeuvenHead3        " text that is part of a heading level 3.
-  hi! link @text.head4       LeuvenHead4        " text that is part of a heading level 4.
-  hi! link @text.head5       LeuvenHead5        " text that is part of a heading level 5.
-  hi! link @text.head6       LeuvenHead6        " text that is part of a heading level 6.
-  hi! link @text.head7       LeuvenHead7        " text that is part of a heading level 7.
-  hi! link @text.head8       LeuvenHead8        " text that is part of a heading level 8.
+  hi! link @text.title.1       LeuvenHead1        " text that is part of a heading level 1.
+  hi! link @text.title.2       LeuvenHead2        " text that is part of a heading level 2.
+  hi! link @text.title.3       LeuvenHead3        " text that is part of a heading level 3.
+  hi! link @text.title.4       LeuvenHead4        " text that is part of a heading level 4.
+  hi! link @text.title.5       LeuvenHead5        " text that is part of a heading level 5.
+  hi! link @text.title.6       LeuvenHead6        " text that is part of a heading level 6.
+  hi! link @text.title.7       LeuvenHead7        " text that is part of a heading level 7.
+  hi! link @text.title.8       LeuvenHead8        " text that is part of a heading level 8.
 endif
 "}}}
 
