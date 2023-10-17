@@ -95,6 +95,7 @@ call s:h('LeuvenSubtleBg'                , s:none                   , s:white_da
 " lualine will not pickup the color from cterm even when it should, so we
 " modify the hex color accordingly
 call s:h('LeuvenComment'                 , s:gray_comment_fg                                                                )
+call s:h('LeuvenCommentSubtleBg'         , s:gray_comment_fg        , s:white_dark_bg                                       )
 if !(has('termguicolors') && &termguicolors)
 call s:h('LeuvenInvertedComment'         , ['#eeeeee', 0]           , s:gray_comment_fg                                     )
 else
@@ -226,7 +227,7 @@ hi! link  Winseparator              LeuvenDarkGray              " separator betw
 hi! link  VertSplit                 LeuvenDarkGray              " column separating vertically split windows
 
 " fold
-hi! link  Folded                    LeuvenSubtleBg              " line used for closed folds
+hi! link  Folded                    LeuvenCommentSubtleBg       " line used for closed folds
 
 " search
 hi! link  IncSearch                 LeuvenDarkBlueBgUnderline   " 'incsearch' highlighting; also used for the text replaced with ":s///c"
