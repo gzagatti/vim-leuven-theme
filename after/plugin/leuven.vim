@@ -26,7 +26,8 @@ if exists('g:loaded_nvim_treesitter')
   hi! link @text.uri         Underlined         " URIs like hyperlinks or email addresses
   hi! link @text.literal     String             " literal or verbatim text.
   hi! link @text.math        LeuvenBlockContent " math environments like LaTeX's `$ ... $`
-  hi! link @text.emphasis    LeuvenEmphasis     " emphasized text, i.e. bold
+  hi! link @text.emphasis    LeuvenEmphasis     " emphasized text, i.e. italic
+  hi! link @text.strong      LeuvenStrong       " emphasized text, i.e. bold
   hi! link @text.reference   Preproc            " footnotes, text references, citations, etc.
   hi! link @text.warning     WarningMsg         " text representation of a warning note.
   hi! link @text.danger      ErrorMsg           " text representation of a danger note.

@@ -85,7 +85,8 @@ endfunction
 
 " highlight groups {{{
 call s:h('LeuvenFg'                      , s:fg                                                                             )
-call s:h('LeuvenEmphasis'                , s:none                   , s:none            , ['bold']                          )
+call s:h('LeuvenEmphasis'                , s:none                   , s:none            , ['italic']                        )
+call s:h('LeuvenStrong'                  , s:none                   , s:none            , ['bold']                          )
 
 call s:h('LeuvenWhiteSpace'              , s:gray_whitespace                                                                )
 
