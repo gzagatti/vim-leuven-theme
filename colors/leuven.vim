@@ -296,6 +296,7 @@ hi! link  Preproc                   LeuvenLiveBlueHighlight     " (*) generic pr
 hi! link  Type                      LeuvenFg                    " (*) int, long, char, etc.
 
 hi! link  Special                   LeuvenFg                    " (*) any special symbol
+hi! link  Delimiter                 Statement                   " delimiter character that needs attention
 
 hi! link  Error                     LeuvenLiveLightRedHighlight " any erroneous construct
 hi! link  Todo                      LeuvenLiveLightRedHighlight " anything that needs extra attention;
