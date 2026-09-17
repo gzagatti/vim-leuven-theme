@@ -1,9 +1,7 @@
-if leuven#should_abort('git')
+if leuven#should_abort('diff')
   finish
 endif
 
 hi! link diffAdded DiffAdd
 hi! link diffRemoved DiffDelete
 hi! link diffChanged DiffChange
-
-" vim: fdm=marker ts=2 sts=2 sw=2 fdl=0:

@@ -128,6 +128,15 @@ call s:h('LeuvenLiveDarkGreenHighlight'  , s:green_dark_fg          , s:green_bg
 call s:h('LeuvenLiveLightRedHighlight'   , s:red_light_fg           , s:red_bg                                              )
 call s:h('LeuvenLiveLightGreenHighlight' , s:green_fg               , s:green_h3_bg, ['bold']                               )
 
+call s:h('LeuvenDiffAdd'                 , s:green_dark_fg          , s:green_bg                                            )
+call s:h('LeuvenDiffDelete'              , s:red_fg                 , s:red_bg                                              )
+call s:h('LeuvenDiffChange'              , s:fg                     , s:blue_light_bg                                       )
+call s:h('LeuvenDiffText'                , s:blue_h2_fg             , s:yellow_light_bg, ['bold']                           )
+call s:h('LeuvenDiffSignAdd'             , s:green_dark_fg                                                                  )
+call s:h('LeuvenDiffSignDelete'          , s:red_fg                                                                         )
+call s:h('LeuvenDiffSignChange'          , s:yellow_h4_fg                                                                   )
+call s:h('LeuvenConflictSign'            , s:red_fg                 , s:yellow_bg, ['bold']                                 )
+
 call s:h('LeuvenYellowBgBold'            , s:none                   , s:yellow_light_bg , ['bold']                          )
 call s:h('LeuvenGreenBg'                 , s:none                   , s:green_bg                                            )
 call s:h('LeuvenCyanBg'                  , s:none                   , s:cyan_fg                                             )
@@ -214,10 +223,14 @@ hi! link  FoldColumn                LeuvenSubtleBg              " 'foldcolumn'
 hi! link  SignColumn                LeuvenSubtleBg              " column where signs are displayed
 
 " diff node, see :h diff.txt
-hi! link  DiffChange                LeuvenInvertedComment       " changed line
-hi! link  DiffAdd                   LeuvenLiveGreenHighlight    " added line
-hi! link  DiffDelete                LeuvenLiveLightRedHighlight " deleted line
-hi! link  DiffText                  LeuvenLiveYellowHighlight   " changed text within a changed line
+hi! link  DiffChange                LeuvenDiffChange            " changed line
+hi! link  DiffAdd                   LeuvenDiffAdd               " added line
+hi! link  DiffDelete                LeuvenDiffDelete            " deleted line
+hi! link  DiffText                  LeuvenDiffText              " changed text within a changed line
+hi! link  DiffSignAdd               LeuvenDiffSignAdd           " added-line sign
+hi! link  DiffSignDelete            LeuvenDiffSignDelete        " deleted-line sign
+hi! link  DiffSignChange            LeuvenDiffSignChange        " changed-line sign
+hi! link  ConflictSign              LeuvenConflictSign          " merge-conflict sign
 
 " msg
 hi! link  ErrorMsg                  LeuvenLiveRedHighlight      " error messages on the command line
