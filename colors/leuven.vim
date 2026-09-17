@@ -130,11 +130,11 @@ call s:h('LeuvenLiveLightGreenHighlight' , s:green_fg               , s:green_h3
 
 call s:h('LeuvenDiffAdd'                 , s:green_dark_fg          , s:green_bg                                            )
 call s:h('LeuvenDiffDelete'              , s:red_fg                 , s:red_bg                                              )
-call s:h('LeuvenDiffChange'              , s:fg                     , s:blue_light_bg                                       )
-call s:h('LeuvenDiffText'                , s:blue_h2_fg             , s:yellow_light_bg, ['bold']                           )
+call s:h('LeuvenDiffChange'              , s:fg                     , s:green_h3_bg                                         )
+call s:h('LeuvenDiffText'                , s:green_dark_fg          , s:green_bg, ['bold']                                  )
 call s:h('LeuvenDiffSignAdd'             , s:green_dark_fg                                                                  )
 call s:h('LeuvenDiffSignDelete'          , s:red_fg                                                                         )
-call s:h('LeuvenDiffSignChange'          , s:yellow_h4_fg                                                                   )
+call s:h('LeuvenDiffSignChange'          , s:green_dark_fg                                                                  )
 call s:h('LeuvenConflictSign'            , s:red_fg                 , s:yellow_bg, ['bold']                                 )
 
 call s:h('LeuvenYellowBgBold'            , s:none                   , s:yellow_light_bg , ['bold']                          )
